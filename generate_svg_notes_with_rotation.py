@@ -17,15 +17,17 @@ kinds_top = ["half_top", "quarter_top"]
 scaling_lines = 2
 note_height_in_relation_to_line_gap = 0.9
 
-tol_x = 0.1
+tol_x = 0.2
 amount_of_notes_in_x_range = 5
 
-tol_y = 0.2
+tol_y = 0.25
 amount_of_notes_in_y_range = 5
 
-angle_bounds = (-4,7) # (min_angle, max_angle)
-number_of_notes_in_angle_range = 10
+angle_bounds = (-2,4) # (min_angle, max_angle)
+number_of_notes_in_angle_range = 3
 
+scaling_note_deviation = 0.4
+number_of_notes_different_sizes = 5
 
 line_gap = (lines["height"] * scaling_lines) / 4.0
 svg_out_width = lines["width"] * scaling_lines
@@ -33,8 +35,8 @@ svg_out_height = lines["height"] * scaling_lines + 4 * line_gap
 is_below_b = False
 
 def main():
-    if os.path.isdir("notes"):
-        shutil.rmtree("notes")
+    if os.path.isdir("svg_notes"):
+        shutil.rmtree("svg_notes")
 
     for note, index in note_to_index.items():
         draw_notes(note, "full", index)      
@@ -53,10 +55,7 @@ def draw_notes(note, kind, index):
     scaling_note, scaled_width_note, scaled_height_note = scale_note(kind)
 
     x_note, y_note = calc_pos_of_note(index, scaled_width_note, scaled_height_note)
-    
-    #to have the optimal note generated
-    generate_svg(note, kind, x_note, y_note, scaling_note, 
-                 scaled_width_note, scaled_height_note)                                                          
+                                                            
     lower_bound_x, lower_bound_y, upper_bound_x, upper_bound_y, step_size_x, step_size_y = calc_bounds_and_step_size(x_note, y_note, scaled_width_note, scaled_height_note)
     
     x = lower_bound_x
@@ -64,8 +63,11 @@ def draw_notes(note, kind, index):
         
     for i in range(0, amount_of_notes_in_x_range):
         for j in range(0, amount_of_notes_in_y_range):
-            generate_svg(note, kind, x, y, scaling_note, 
+            scaling_range = calc_scale_range(scaling_note)
+            for scaling in scaling_range:    
+                generate_svg(note, kind, x, y, scaling, 
                          scaled_width_note, scaled_height_note)
+                
             y += step_size_y
             
         y = lower_bound_y
@@ -112,7 +114,7 @@ def generate_svg(note, kind, x_note, y_note, scaling_note, scaled_width_note, sc
     dir_name = supply_dir(note, kind)
     fname_part_1 = "{}/{}_{}_{}".format(dir_name, note, x_note, y_note)         
             
-    angle_range = calc_angle_range()
+    angle_range, angle_step = calc_angle_range()
     
     lines_svg = SVG("SVGs/lines.svg")
     lines_svg.scale(scaling_lines).move(0,2*line_gap)   
@@ -125,7 +127,7 @@ def generate_svg(note, kind, x_note, y_note, scaling_note, scaled_width_note, sc
     
     x_pivot, y_pivot = calc_rotate_pivot(kind, scaling_note)
     
-        
+    
     if note == "a" or note == "c,":
         current_help_line = help_line_dict[kind]
         
@@ -138,26 +140,31 @@ def generate_svg(note, kind, x_note, y_note, scaling_note, scaled_width_note, sc
         help_line_svg = SVG("SVGs/{}.svg".format(current_help_line["name"]))
         help_line_svg.scale(scaling_note).move(x_help_line,y_help_line)    
             
+        rotate_by = angle_bounds[0]
         for angle in angle_range:
-            fname_out = "{}_{}.svg".format(fname_part_1, angle)
-
-            note_svg.rotate(angle, x_pivot, y_pivot)            
+            fname_out = "{}_{}_{}.svg".format(fname_part_1, angle, scaling_note)
+            note_svg.rotate(rotate_by, x_pivot, y_pivot)      
 
             Figure("{}px".format(svg_out_width), "{}px".format(svg_out_height),
                    lines_svg,note_svg, help_line_svg).save(fname_out) 
             
+            rotate_by += angle_step
+            
     else:
   
+        rotate_by = angle_bounds[0]
         for angle in angle_range:
-            fname_out = "{}_{}.svg".format(fname_part_1, angle)
-
-            note_svg.rotate(angle, x_pivot, y_pivot)
-        
+            fname_out = "{}_{}_{}.svg".format(fname_part_1, angle, scaling_note)
+            note_svg.rotate(rotate_by, x_pivot, y_pivot)
+ 
             Figure("{}px".format(svg_out_width), "{}px".format(svg_out_height),
                    lines_svg,note_svg).save(fname_out)   
+            
+            rotate_by += angle_step
+            
  
 def supply_dir(note, kind):
-    dir_name = "{}/{}_{}".format("notes", note, kind)
+    dir_name = "{}/{}_{}".format("svg_notes", note, kind)
     if not os.path.isdir(dir_name):
         os.makedirs(dir_name)      
         
@@ -199,10 +206,23 @@ def calc_angle_range():
         angle_range.append(angle)
         angle += step_size
         
-    return angle_range
+    return angle_range, step_size
         
         
+def calc_scale_range(scaling_note):
+    lower = scaling_note - scaling_note_deviation * scaling_note
+    upper = scaling_note + scaling_note_deviation * scaling_note
     
+    step_size = (upper - lower) / (number_of_notes_different_sizes-1)
+    scaling_range = []
+    
+    scale = lower
+    for i in range(0, number_of_notes_different_sizes):
+        scaling_range.append(scale)
+        scale += step_size
+    
+    return scaling_range
+
 if __name__=="__main__": 
     main() 
  

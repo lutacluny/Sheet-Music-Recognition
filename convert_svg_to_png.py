@@ -13,13 +13,13 @@ import os
 
 
 def main():
-    if os.path.isdir('jpg_notes'):
-        shutil.rmtree('jpg_notes')
+    if os.path.isdir('png_notes'):
+        shutil.rmtree('png_notes')
        
-    shutil.copytree('svg_notes', 'jpg_notes')   
+    shutil.copytree('svg_notes', 'png_notes')   
     
     
-    for dirName, subdirList, fileList in os.walk('jpg_notes'):
+    for dirName, subdirList, fileList in os.walk('png_notes'):
         for fName in fileList:
             svgLocation = "{}/{}".format(dirName, fName)
         
