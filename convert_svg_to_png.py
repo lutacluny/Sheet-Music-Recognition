@@ -6,20 +6,20 @@ Created on Tue Jan 19 12:35:28 2021
 @author: fritz
 """
 from cairosvg import svg2png
-from PIL import  Image
+from PIL import  Image, ImageFilter
 import shutil
 import os
 
-
+category = 'kinds'
 
 def main():
-    if os.path.isdir('png_notes'):
-        shutil.rmtree('png_notes')
+    if os.path.isdir("png_{}".format(category)):
+        shutil.rmtree("png_{}".format(category))
        
-    shutil.copytree('svg_notes', 'png_notes')   
+    shutil.copytree("svg_{}".format(category), "png_{}".format(category))   
     
     
-    for dirName, subdirList, fileList in os.walk('png_notes'):
+    for dirName, subdirList, fileList in os.walk("png_{}".format(category)):
         for fName in fileList:
             svgLocation = "{}/{}".format(dirName, fName)
         
@@ -30,8 +30,11 @@ def main():
 
             note = Image.open(imgLocation)
             make_background_white(note)
-            converted = note.convert('L')      
+            converted = note.convert('L') 
             converted.save(imgLocation)
+            
+            #filtered = converted.filter(ImageFilter.Kernel((5,5),5*[10,5,2,5,10]))
+            #filtered.save(imgLocation)
             
             os.remove(svgLocation)
 

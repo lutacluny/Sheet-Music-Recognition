@@ -17,7 +17,7 @@ kinds_top = ["half_top", "quarter_top"]
 scaling_lines = 2
 note_height_in_relation_to_line_gap = 0.9
 
-tol_x = 0.15
+tol_x = 0.2
 amount_of_notes_in_x_range = 5
 
 tol_y = 0.25
@@ -35,8 +35,8 @@ svg_out_height = lines["height"] * scaling_lines + 4 * line_gap
 is_below_b = False
 
 def main():
-    if os.path.isdir("svg_notes"):
-        shutil.rmtree("svg_notes")
+    if os.path.isdir("svg_kinds"):
+        shutil.rmtree("svg_kinds")
 
     for note, index in note_to_index.items():
         draw_notes(note, "full", index)      
@@ -116,8 +116,6 @@ def generate_svg(note, kind, x_note, y_note, scaling_note, scaled_width_note, sc
             
     angle_range, angle_step = calc_angle_range()
     
-    lines_svg = SVG("SVGs/lines.svg")
-    lines_svg.scale(scaling_lines).move(0,2*line_gap)   
         
     if is_below_b:
         y_note = adjust_y_note(kind, y_note, scaling_note)
@@ -146,7 +144,7 @@ def generate_svg(note, kind, x_note, y_note, scaling_note, scaled_width_note, sc
             note_svg.rotate(rotate_by, x_pivot, y_pivot)      
 
             Figure("{}px".format(svg_out_width), "{}px".format(svg_out_height),
-                   lines_svg,note_svg, help_line_svg).save(fname_out) 
+                  note_svg, help_line_svg).save(fname_out) 
             
             rotate_by += angle_step
             
@@ -158,13 +156,13 @@ def generate_svg(note, kind, x_note, y_note, scaling_note, scaled_width_note, sc
             note_svg.rotate(rotate_by, x_pivot, y_pivot)
  
             Figure("{}px".format(svg_out_width), "{}px".format(svg_out_height),
-                   lines_svg,note_svg).save(fname_out)   
+                   note_svg).save(fname_out)   
             
             rotate_by += angle_step
             
  
 def supply_dir(note, kind):
-    dir_name = "{}/{}_{}".format("svg_notes", note, kind)
+    dir_name = "{}/{}".format("svg_kinds", kind)
     if not os.path.isdir(dir_name):
         os.makedirs(dir_name)      
         
