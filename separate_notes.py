@@ -20,7 +20,7 @@ len_width = np_img.shape[1]
 len_height = np_img.shape[0]
 
 tresh_pixel_to_separate = 9
-dir_to_save = "separated notes"
+dir_to_save = "separated_notes"
 
 def main():
     if os.path.isdir(dir_to_save):
@@ -113,7 +113,9 @@ def create_list_of_notes(marked_cols):
     index = 0;
     for col in marked_cols:
         if is_note_col(col) and dist_to_prev_note > tresh_pixel_to_separate and not is_on_a_note:
-            note = [index - tresh_pixel_to_separate]
+            #TODO : setting index to 0 if index - tresh_pixel_to_separate < 0 might cause problems
+            index = max(0, index - tresh_pixel_to_separate)
+            note = [index]
             
             dist_to_prev_note = 1
             is_on_a_note = True 

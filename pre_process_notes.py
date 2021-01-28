@@ -14,7 +14,7 @@ tresh_for_seperate_black_white = 90
 width_out = 40 
 height_out = 100
 
-vanilla_path = 'separated notes'
+vanilla_path = 'separated_notes'
 pre_processed_path = 'pre_processed'
     
 def main():
@@ -75,7 +75,8 @@ def load_note_black_white(f_name):
     os.remove(img_location)
     return img
     
-""" calc one the column specified by col"""
+""" calc on the column specified by col"""
+# TODO: take different columns because the first column might not be apropriated (in case it contains a note)
 def calc_space_between_lines(np_img, col):
     is_between_to_lines = False
     is_prev_black = False
