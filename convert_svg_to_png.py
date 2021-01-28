@@ -10,7 +10,7 @@ from PIL import  Image
 import shutil
 import os
 
-category = 'notes'
+category = 'tests'
 
 def main():
     if os.path.isdir("png_{}".format(category)):

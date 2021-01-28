@@ -35,7 +35,7 @@ def main():
     convert_notes_to_images(notes)
 
 
-def calc_space_between_lines(col):
+def calc_space_between_lines(col_index):
     is_between_to_lines = False
     is_prev_black = False
     
@@ -44,7 +44,7 @@ def calc_space_between_lines(col):
     pixel_between_lines = 0
     amout_black_pixel = 0
     
-    for pixel in np_img[:, col]:
+    for pixel in np_img[:, col_index]:
         if is_between_to_lines and isWhite(pixel):
             pixel_between_lines += 1
             
@@ -114,8 +114,8 @@ def create_list_of_notes(marked_cols):
     for col in marked_cols:
         if is_note_col(col) and dist_to_prev_note > tresh_pixel_to_separate and not is_on_a_note:
             #TODO : setting index to 0 if index - tresh_pixel_to_separate < 0 might cause problems
-            index = max(0, index - tresh_pixel_to_separate)
-            note = [index]
+            index_lower = max(0, index - tresh_pixel_to_separate)
+            note = [index_lower]
             
             dist_to_prev_note = 1
             is_on_a_note = True 
