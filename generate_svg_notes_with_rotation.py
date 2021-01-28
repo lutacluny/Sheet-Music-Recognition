@@ -14,6 +14,10 @@ from note_dicts import kind_dict, help_line_dict, lines, note_to_index
 kinds_bottom = ["half_bottom", "quarter_bottom", ]
 kinds_top = ["half_top", "quarter_top"]
 
+''' Define the output resolution as follows: 
+    width = 20 * scaling_lines 
+    height = 50 * scaling_lines'''
+    
 scaling_lines = 2
 note_height_in_relation_to_line_gap = 0.9
 

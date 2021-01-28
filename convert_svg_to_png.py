@@ -6,11 +6,11 @@ Created on Tue Jan 19 12:35:28 2021
 @author: fritz
 """
 from cairosvg import svg2png
-from PIL import  Image, ImageFilter
+from PIL import  Image
 import shutil
 import os
 
-category = 'kinds'
+category = 'notes'
 
 def main():
     if os.path.isdir("png_{}".format(category)):
@@ -32,10 +32,7 @@ def main():
             make_background_white(note)
             converted = note.convert('L') 
             converted.save(imgLocation)
-            
-            #filtered = converted.filter(ImageFilter.Kernel((5,5),5*[10,5,2,5,10]))
-            #filtered.save(imgLocation)
-            
+                
             os.remove(svgLocation)
 
 def make_background_white(note):
