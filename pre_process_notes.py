@@ -14,8 +14,8 @@ tresh_for_seperate_black_white = 90
 width_out = 40 
 height_out = 100
 
-vanilla_path = 'hand_written_notes/vanilla'
-pre_processed_path = 'hand_written_notes/pre_processed'
+vanilla_path = 'separated notes'
+pre_processed_path = 'pre_processed'
     
 def main():
 

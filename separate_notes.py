@@ -7,6 +7,7 @@ Created on Mon Jan 18 12:24:34 2021
 """
 from PIL import Image
 import numpy as np
+import sys, os, shutil
 
 img = Image.open("line.png")
 thresh = 200
@@ -18,7 +19,14 @@ np_img = np.asarray(img)
 len_width = np_img.shape[1]
 len_height = np_img.shape[0]
 
+tresh_pixel_to_separate = 9
+dir_to_save = "separated notes"
+
 def main():
+    if os.path.isdir(dir_to_save):
+        shutil.rmtree(dir_to_save)    
+    os.mkdir(dir_to_save)
+    
     space_between_lines, amount_black_pixel = calc_space_between_lines(0)
     marked_cols = mark_col_true_if_is_on_a_note(amount_black_pixel, 0)
 
@@ -99,23 +107,33 @@ def mark_col_true_if_is_on_a_note(amount_black_pixel, epsilon):
 
 def create_list_of_notes(marked_cols):
     is_on_a_note = False
-    is_prev_note_col = False
+    dist_to_prev_note = sys.maxsize
     
     notes = []
     index = 0;
     for col in marked_cols:
-        if is_note_col(col) and not is_prev_note_col and not is_on_a_note:
-            note = [index]
+        if is_note_col(col) and dist_to_prev_note > tresh_pixel_to_separate and not is_on_a_note:
+            note = [index - tresh_pixel_to_separate]
             
-            is_prev_note_col = True
+            dist_to_prev_note = 1
             is_on_a_note = True 
             
-        if not is_note_col(col) and is_prev_note_col:
+        elif not is_note_col(col) and dist_to_prev_note > tresh_pixel_to_separate and is_on_a_note:
             note.append(index)
             notes.append(note)
             
             is_on_a_note = False
-            is_prev_note_col = False
+            dist_to_prev_note += 1
+        
+        elif not is_note_col(col) and dist_to_prev_note <= tresh_pixel_to_separate and is_on_a_note:
+            dist_to_prev_note += 1
+            
+        elif is_note_col(col):
+            dist_to_prev_note = 1 
+            
+        else:
+            dist_to_prev_note += 1
+            
             
         index += 1
    
@@ -132,7 +150,7 @@ def convert_notes_to_images(notes):
     for note in notes:
         note_matrix = np_img[:, note[0]:note[1]]
         note_img = Image.fromarray(note_matrix)
-        note_img.save("note_{}.png".format(index))
+        note_img.save("{}/note_{}.png".format(dir_to_save, index))
         index += 1
     
 
