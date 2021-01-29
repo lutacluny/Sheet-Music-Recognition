@@ -9,33 +9,46 @@ from PIL import Image
 import numpy as np
 import sys, os, shutil
 
-img = Image.open("line.png")
+
 thresh = 200
 fn = lambda x : 255 if x > thresh else 0
-img = img.convert('L').point(fn, mode='1')
-np_img = np.asarray(img)
-
-
-len_width = np_img.shape[1]
-len_height = np_img.shape[0]
 
 tresh_pixel_to_separate = 9
+thresh_amount_black_pixel_in_col_without_note = 0
+
 dir_to_save = "separated_notes"
+dir_to_open = "separated_lines"
 
-def main():
-    if os.path.isdir(dir_to_save):
-        shutil.rmtree(dir_to_save)    
-    os.mkdir(dir_to_save)
-    
-    space_between_lines, amount_black_pixel = calc_space_between_lines(0)
-    marked_cols = mark_col_true_if_is_on_a_note(amount_black_pixel, 0)
+def main():    
+    for dirName, subdirList, fileList in os.walk(dir_to_open):
+        for fName in fileList:
+            test_name = dirName.split('/')[1]
+            if test_name[0] == '_':
+                continue
+            f_name_without_png = fName[:-4]
+            out_dir = "{}/{}/{}".format(dir_to_save, test_name, f_name_without_png)
+            
+            if os.path.isdir(out_dir):
+                shutil.rmtree(out_dir)    
+            os.makedirs(out_dir)
+                
+            img = Image.open("{}/{}".format(dirName,fName))
+            np_img = np.asarray(img)
+            img = img.convert('L').point(fn, mode='1')
 
-    notes = create_list_of_notes(marked_cols)
+            len_width = np_img.shape[1]
+            len_height = np_img.shape[0]
+            
+            col = np_img[:, 0]
+            space_between_lines, amount_black_pixel = calc_space_between_lines(col)
+            marked_cols = mark_col_true_if_is_on_a_note(amount_black_pixel, np_img, len_width, len_height)
 
-    convert_notes_to_images(notes)
+            notes = create_list_of_notes(marked_cols)
+
+            convert_notes_to_images(notes, out_dir, np_img)
 
 
-def calc_space_between_lines(col_index):
+def calc_space_between_lines(col):
     is_between_to_lines = False
     is_prev_black = False
     
@@ -44,7 +57,7 @@ def calc_space_between_lines(col_index):
     pixel_between_lines = 0
     amout_black_pixel = 0
     
-    for pixel in np_img[:, col_index]:
+    for pixel in col:
         if is_between_to_lines and isWhite(pixel):
             pixel_between_lines += 1
             
@@ -91,14 +104,14 @@ def calc_amount_black_pixel_in_col(col):
     return amount_black_pixel
         
 
-def mark_col_true_if_is_on_a_note(amount_black_pixel, epsilon):
+def mark_col_true_if_is_on_a_note(amount_black_pixel, np_img, len_width, len_height):
     marked_cols = np.empty(len_width,dtype=bool)
     
     for i in range(0, len_width):
         col = np_img[:,i]
         amount_black_pixel_in_col = calc_amount_black_pixel_in_col(col)
         
-        if amount_black_pixel_in_col > amount_black_pixel + epsilon :
+        if amount_black_pixel_in_col > amount_black_pixel + thresh_amount_black_pixel_in_col_without_note :
             marked_cols[i] = True
         else:
             marked_cols[i] = False
@@ -147,12 +160,15 @@ def is_note_col(col):
     else:
         return False
     
-def convert_notes_to_images(notes):
+def convert_notes_to_images(notes, out_dir, np_img):
     index = 0
     for note in notes:
+        if index == 0 or index == len(notes) - 1: #ommit key and end line symbol
+            index += 1
+            continue
         note_matrix = np_img[:, note[0]:note[1]]
         note_img = Image.fromarray(note_matrix)
-        note_img.save("{}/note_{}.png".format(dir_to_save, index))
+        note_img.save("{}/note_{}.png".format(out_dir, index))
         index += 1
     
 

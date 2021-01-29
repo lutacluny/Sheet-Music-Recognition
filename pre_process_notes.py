@@ -19,7 +19,6 @@ pre_processed_path = 'pre_processed'
     
 def main():
 
-    
     if os.path.isdir(pre_processed_path):
         shutil.rmtree(pre_processed_path)
         
@@ -28,9 +27,9 @@ def main():
     for dir_name, subdir_list, file_list in os.walk(pre_processed_path):
         for f_name in file_list:
             f_name_new = "{}_{}".format(f_name[:-4], "pre_processed.png")
-            new_location = "{}/{}".format(pre_processed_path, f_name_new)
+            new_location = "{}/{}".format(dir_name, f_name_new)
             
-            note_img = load_note_black_white(f_name)
+            note_img = load_note_black_white(dir_name, f_name)
             width, height = note_img.size
             
             np_img = np.asarray(note_img)
@@ -67,8 +66,8 @@ def main():
             resized_img.save(new_location)
             
       
-def load_note_black_white(f_name):
-    img_location = "{}/{}".format(pre_processed_path, f_name)
+def load_note_black_white(dir_name, f_name):
+    img_location = "{}/{}".format(dir_name, f_name)
     img = Image.open(img_location)
     fn = lambda x : 255 if x > tresh_for_seperate_black_white else 0
     img = img.convert('L').point(fn, mode ='1')
