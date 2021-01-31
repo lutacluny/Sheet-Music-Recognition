@@ -5,6 +5,10 @@ Created on Tue Jan 19 18:50:05 2021
 
 @author: fritz
 """
+
+'''IMPORTANT directories beginning with '_' are not gonna be processed '''
+
+
 from PIL import Image
 import shutil
 import os
@@ -26,6 +30,7 @@ def main():
     
     for dir_name, subdir_list, file_list in os.walk(pre_processed_path):
         for f_name in file_list:
+            f_name.strip()
             f_name_new = "{}_{}".format(f_name[:-4], "pre_processed.png")
             new_location = "{}/{}".format(dir_name, f_name_new)
             

@@ -5,13 +5,9 @@ Created on Thu Jan 28 20:40:33 2021
 
 @author: fritz
 """
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 18 12:24:34 2021
 
-@author: fritz
-"""
+'''IMPORTANT files beginning with '_' are not gonna be processed '''
+
 from PIL import Image
 import numpy as np
 import os
@@ -19,47 +15,50 @@ import shutil
 import Union_and_Find
 
 
-thresh = 200
+thresh = 100
 fn = lambda x : 255 if x > thresh else 0
 
 
-
-tresh_equiv_class_test = 1 
+tresh_equiv_class_test = 2
 
 dir_to_open = "png_tests"
 dir_to_save = "separated_lines"
 
-epsilon_space_between_lines = 2 
-
 def main():
     for dirName, subdirList, fileList in os.walk(dir_to_open):
         for fName in fileList:
-            if fName[0] == "_":
+            fName.strip()
+            if fName[0] == '_':
                 continue
             f_name_without_png = fName[:-4]
         
-        out_dir = "{}/{}".format(dir_to_save, f_name_without_png)
-        if os.path.isdir(out_dir):
-            shutil.rmtree(out_dir)    
-        os.mkdir(out_dir)
+            out_dir = "{}/{}".format(dir_to_save, f_name_without_png)
+            if os.path.isdir(out_dir):
+                shutil.rmtree(out_dir)    
+            os.mkdir(out_dir)
         
-        img_name = "{}/{}".format(dirName, fName)
-        separate_lines(img_name, out_dir)
+            img_name = "{}/{}".format(dirName, fName)
+            separate_lines(img_name, out_dir)
     
 def separate_lines(img_name, out_dir):
     img = Image.open(img_name)
     img = img.convert('L').point(fn, mode='1')
     np_img = np.asarray(img)
-
-                
+    
+    #angle, (x,y) = calc_rotation_angle(np_img)
+    #img.rotate(angle, center=(x,y))    
+    #img.show()     
+    np_img = np.asarray(img)
+    
     matching_col_found = False
-    col_index = -1
+    col_index = int(np_img.shape[1] / 2)
     
     while matching_col_found == False:
         col_index += 1
         spaces_between_lines = calc_spaces_between_lines(np_img[:,col_index])
         matching_col_found = is_matching_pattern(spaces_between_lines)
         space_between_lines = matching_col_found
+        
         
     col = np_img[:, col_index]
     space_indices_above_upper_line = calc_space_indices_above_upper_line(space_between_lines, spaces_between_lines)
@@ -71,8 +70,9 @@ def separate_lines(img_name, out_dir):
     
     bounding_boxes = calc_bounding_boxes(space_between_lines, line_width, upper_left_y_of_lines, col)
     
-    cut_image_on_bounding_boxes(bounding_boxes, col_index, np_img, out_dir)
-        
+    cut_image_on_bounding_boxes(bounding_boxes, np_img, out_dir)
+ 
+       
 def calc_spaces_between_lines(col):
     is_between_to_lines = False
     is_prev_black = False
@@ -108,7 +108,9 @@ def calc_spaces_between_lines(col):
 def is_matching_pattern(spaces_between_lines):
     spaces_between_lines = np.asarray(spaces_between_lines)
     
-    if len(spaces_between_lines) < 4:
+    len_spaces_between_lines = len(spaces_between_lines) 
+    
+    if len_spaces_between_lines == 0:
         return False 
     
     union_and_find = Union_and_Find.Union_and_Find(spaces_between_lines, 3)
@@ -116,12 +118,24 @@ def is_matching_pattern(spaces_between_lines):
     union_and_find.sort_eq_classes_by_members_descending()
     
     biggest = union_and_find.eq_classes.pop(0)
-    seccond_biggest = union_and_find.eq_classes.pop(0)
         
-    if biggest.amount_of_members - seccond_biggest.amount_of_members > tresh_equiv_class_test:
+    nr_of_lines = (len_spaces_between_lines + 1) / 5
+    
+    len_matches = nr_of_lines == int(nr_of_lines)
+    
+    if biggest.amount_of_members % 4 == 0 and len_matches:
+        global epsilon_space_between_lines  
+        epsilon_space_between_lines = calc_max_diff_members(biggest)
         return biggest.repr
-    else: 
+        
+    else:   
         return False
+
+def calc_max_diff_members(biggest_eq_class):
+    members_sorted = sorted(biggest_eq_class.members)
+    lowest = members_sorted [0]
+    highest = members_sorted[biggest_eq_class.amount_of_members - 1]
+    return  highest - lowest
     
 ''' needs to be adjusted, if black pixel appears in unexpected location '''
 def calc_space_indices_above_upper_line(space_between_lines, spaces_between_lines):
@@ -199,13 +213,20 @@ def calc_bounding_boxes(space_between_lines, line_width, upper_left_y_of_lines, 
         
     return bounding_boxes
         
-def cut_image_on_bounding_boxes(bounding_boxes, col_index, np_img, out_dir):
+def cut_image_on_bounding_boxes(bounding_boxes, np_img, out_dir):
     index = 0
     for bounding_box in bounding_boxes:
         upper_left = bounding_box[0]
         lower_left = bounding_box[1]
         
         len_width = np_img.shape[1]
+        
+        col_index = - 1
+        matching_col_found = False
+        while matching_col_found == False:
+            col_index += 1
+            spaces_between_lines = calc_spaces_between_lines(np_img[:,col_index])
+            matching_col_found = is_matching_pattern(spaces_between_lines)  
         
         line_matrix = np_img[upper_left:lower_left,col_index:len_width]
         line_img = Image.fromarray(line_matrix)
@@ -222,6 +243,47 @@ def isBlack(pixel):
 def isWhite(pixel):
     return not isBlack(pixel)
 
+def calc_rotation_angle(np_img):
+    x_left, y_left = first_black_left(np_img)
+    x_right, y_right = first_black_right(np_img)
+    
+    if y_left >= y_right:
+        rotate_clockwise = True
+    else:
+        rotate_clockwise = False
+        
+    angle = np.arctan(abs(y_left - y_right) / abs(x_left - x_right))
+    
+    if rotate_clockwise == True:
+        angle = - angle
+        
+    return angle, (x_left, y_left)
+
+def first_black_left(np_img):
+    len_width = np_img.shape[1]
+    for x in range(0, len_width):
+        col = np_img[:,x]
+        y = find_first_black_pixel_in_col(col)
+        if y > 0:
+            return x, y
+        
+def first_black_right(np_img):
+    len_width = np_img.shape[1]
+    for x in range(len_width - 1, -1 , -1):
+        col = np_img[:,x]
+        y = find_first_black_pixel_in_col(col)
+        if y > 0:
+            return x, y
+        
+def find_first_black_pixel_in_col(col):
+    index = 0 
+    for pixel in col:
+        if isBlack(pixel):
+            return index 
+        index += 1 
+        
+    return -1
+    
 if __name__=="__main__": 
     main() 
 

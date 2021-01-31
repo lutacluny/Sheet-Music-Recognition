@@ -5,16 +5,18 @@ Created on Mon Jan 18 12:24:34 2021
 
 @author: fritz
 """
+
+'''IMPORTANT directories beginning with '_' are not gonna be processed '''
+
 from PIL import Image
 import numpy as np
 import sys, os, shutil
 
 
-thresh = 200
+thresh = 90
 fn = lambda x : 255 if x > thresh else 0
 
-tresh_pixel_to_separate = 9
-thresh_amount_black_pixel_in_col_without_note = 0
+amount_black_pixel_deviation = 0.05
 
 dir_to_save = "separated_notes"
 dir_to_open = "separated_lines"
@@ -22,6 +24,7 @@ dir_to_open = "separated_lines"
 def main():    
     for dirName, subdirList, fileList in os.walk(dir_to_open):
         for fName in fileList:
+            fName.strip()
             test_name = dirName.split('/')[1]
             if test_name[0] == '_':
                 continue
@@ -39,8 +42,19 @@ def main():
             len_width = np_img.shape[1]
             len_height = np_img.shape[0]
             
-            col = np_img[:, 0]
-            space_between_lines, amount_black_pixel = calc_space_between_lines(col)
+            global tresh_pixel_to_separate
+            tresh_pixel_to_separate = int (len_width / 70)
+            space_between_lines = -1
+            col_index = 0
+            
+            while space_between_lines == -1:
+                col = np_img[:, col_index]
+                space_between_lines, amount_black_pixel = calc_space_between_lines(col)
+                
+                global thresh_amount_black_pixel_in_col_without_note
+                thresh_amount_black_pixel_in_col_without_note = amount_black_pixel + amount_black_pixel * amount_black_pixel_deviation
+                col_index += 1
+                
             marked_cols = mark_col_true_if_is_on_a_note(amount_black_pixel, np_img, len_width, len_height)
 
             notes = create_list_of_notes(marked_cols)
@@ -82,7 +96,7 @@ def calc_space_between_lines(col):
     if len(spaces_between_lines) == 4:
         return np.asarray(spaces_between_lines).mean(), amout_black_pixel
     
-    raise Exception()
+    return -1, -1
     
 def isBlack(pixel):
     if pixel == True:
