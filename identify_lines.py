@@ -35,7 +35,7 @@ def main():
             out_dir = "{}/{}".format(dir_to_save, f_name_without_png)
             if os.path.isdir(out_dir):
                 shutil.rmtree(out_dir)    
-            os.mkdir(out_dir)
+            os.makedirs(out_dir)
         
             img_name = "{}/{}".format(dirName, fName)
             separate_lines(img_name, out_dir)
@@ -137,7 +137,7 @@ def calc_max_diff_members(biggest_eq_class):
     highest = members_sorted[biggest_eq_class.amount_of_members - 1]
     return  highest - lowest
     
-''' needs to be adjusted, if black pixel appears in unexpected location '''
+
 def calc_space_indices_above_upper_line(space_between_lines, spaces_between_lines):
     counter = 0
     space_indices_above_upper_line = []
@@ -156,7 +156,7 @@ def calc_space_indices_above_upper_line(space_between_lines, spaces_between_line
         
     return space_indices_above_upper_line
 
-''' space needs to be perfect '''
+
 def calc_upper_left_y_of_lines(col, space_indices_above_upper_line):
     is_on_blacks = False
        
