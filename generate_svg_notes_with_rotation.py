@@ -19,18 +19,18 @@ kinds_top = ["half_top", "quarter_top"]
     height = 50 * scaling_lines'''
     
 scaling_lines = 2
-note_height_in_relation_to_line_gap = 0.9
+note_height_in_relation_to_line_gap = 1.0
 
-tol_x = 0.15
+tol_x = 0.20
 amount_of_notes_in_x_range = 5
 
-tol_y = 0.25
+tol_y = 0.05
 amount_of_notes_in_y_range = 5
 
 angle_bounds = (-2,4) # (min_angle, max_angle)
 number_of_notes_in_angle_range = 3
 
-scaling_note_deviation = 0.4
+scaling_note_deviation = 0.2
 number_of_notes_different_sizes = 5
 
 line_gap = (lines["height"] * scaling_lines) / 4.0
