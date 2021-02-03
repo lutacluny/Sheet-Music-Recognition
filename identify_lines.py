@@ -15,7 +15,7 @@ import shutil
 import Union_and_Find
 
 
-thresh = 100
+thresh = 140
 fn = lambda x : 255 if x > thresh else 0
 
 
@@ -54,14 +54,14 @@ def separate_lines(img_name, out_dir):
     col_index = int(np_img.shape[1] / 2)
     
     while matching_col_found == False:
-        col_index += 1
-        spaces_between_lines = calc_spaces_between_lines(np_img[:,col_index])
-        matching_col_found = is_matching_pattern(spaces_between_lines)
+        col_index -= 1
+        pixel_between_black_structures = calc_pixel_between_black_structures(np_img[:,col_index].tolist())
+        matching_col_found = is_matching_pattern(pixel_between_black_structures)
         space_between_lines = matching_col_found
         
-        
-    col = np_img[:, col_index]
-    space_indices_above_upper_line = calc_space_indices_above_upper_line(space_between_lines, spaces_between_lines)
+    
+    col = np_img[:, col_index].tolist()
+    space_indices_above_upper_line = calc_space_indices_above_upper_line(pixel_between_black_structures)
     upper_left_y_of_lines = calc_upper_left_y_of_lines(col, space_indices_above_upper_line)
     nr_of_lines = len(upper_left_y_of_lines)
     
@@ -72,64 +72,69 @@ def separate_lines(img_name, out_dir):
     
     cut_image_on_bounding_boxes(bounding_boxes, np_img, out_dir)
  
-       
-def calc_spaces_between_lines(col):
-    is_between_to_lines = False
-    is_prev_black = False
     
-    spaces_between_lines = []
+def calc_pixel_between_black_structures(col):
+    pixel_between_black_structures = []
     
-    pixel_between_lines = 0
-    amout_black_pixel = 0
+    is_prev_white = True  
+    pixel_in_between = 0
     
     for pixel in col:
-        if is_between_to_lines and isWhite(pixel):
-            pixel_between_lines += 1
+        
+        if isBlack(pixel):
             
-        elif is_between_to_lines and isBlack(pixel) and not is_prev_black:
-            amout_black_pixel += 1
-            spaces_between_lines.append(pixel_between_lines)
-            is_prev_black = True
-            is_between_to_lines = False
-            pixel_between_lines = 0
+            if is_prev_white:
+                pixel_between_black_structures.append(pixel_in_between)
+                pixel_in_between = 0          
+            is_prev_white = False
+                            
+        else: 
+            pixel_in_between += 1
+            is_prev_white = True
             
-        elif is_prev_black and isWhite(pixel):
-            is_prev_black = False
-            is_between_to_lines = True          
-            
-            pixel_between_lines += 1
-            
-        elif isBlack(pixel):
-            is_prev_black = True
-            amout_black_pixel += 1
-                    
-    return spaces_between_lines
+    if is_prev_white:
+        pixel_between_black_structures.append(pixel_in_between)
+        
+    return pixel_between_black_structures
 
-def is_matching_pattern(spaces_between_lines):
-    spaces_between_lines = np.asarray(spaces_between_lines)
+def is_matching_pattern(pixel_between_black_structures):
+    pixel_between_black_structures = np.asarray(pixel_between_black_structures)
     
-    len_spaces_between_lines = len(spaces_between_lines) 
+    len_pixel_between_black_structures = len(pixel_between_black_structures) 
     
-    if len_spaces_between_lines == 0:
+    if len_pixel_between_black_structures < 5:
         return False 
     
-    union_and_find = Union_and_Find.Union_and_Find(spaces_between_lines, 3)
+    nr_of_lines = (len_pixel_between_black_structures - 1) / 5
+    len_matches = nr_of_lines == int(nr_of_lines)
+    
+    if not len_matches:
+        return False 
+    
+    union_and_find = Union_and_Find.Union_and_Find(pixel_between_black_structures, 3)
     union_and_find.calc_eq_classes()
     union_and_find.sort_eq_classes_by_members_descending()
     
     biggest = union_and_find.eq_classes.pop(0)
         
-    nr_of_lines = (len_spaces_between_lines + 1) / 5
+    current = biggest
     
-    len_matches = nr_of_lines == int(nr_of_lines)
+    while not pixel_between_black_structures[5] in current.members:
+        current = union_and_find.eq_classes.pop(0)
     
-    if biggest.amount_of_members % 4 == 0 and len_matches:
-        global epsilon_space_between_lines  
-        epsilon_space_between_lines = calc_max_diff_members(biggest)
-        return biggest.repr
+    for i in range(1, len_pixel_between_black_structures-1): #space below last line and above last line does not matter
+        if i % 5 == 0:
+            if not pixel_between_black_structures[i] in current.members:
+                return False
+        else:
+            if not pixel_between_black_structures[i] in biggest.members:
+                return False 
         
-    else:   
-        return False
+            
+    global epsilon_space_between_lines  
+    epsilon_space_between_lines = calc_max_diff_members(biggest) 
+        
+    return biggest.repr
 
 def calc_max_diff_members(biggest_eq_class):
     members_sorted = sorted(biggest_eq_class.members)
@@ -138,29 +143,23 @@ def calc_max_diff_members(biggest_eq_class):
     return  highest - lowest
     
 
-def calc_space_indices_above_upper_line(space_between_lines, spaces_between_lines):
-    counter = 0
+def calc_space_indices_above_upper_line(pixel_between_black_structures):
     space_indices_above_upper_line = []
+    counter = 0 
     
-    is_space_between_lines = False
-    for space in spaces_between_lines:
-        
-        if abs(space - space_between_lines) <= epsilon_space_between_lines:
-            if not is_space_between_lines:   
-                space_indices_above_upper_line.append(counter)
-                is_space_between_lines = True
-        else:         
-            is_space_between_lines = False
+    for space in pixel_between_black_structures:
+        if (counter - 1) % 5 == 0:
+            space_indices_above_upper_line.append(counter)
             
         counter += 1
-        
+      
     return space_indices_above_upper_line
 
 
 def calc_upper_left_y_of_lines(col, space_indices_above_upper_line):
     is_on_blacks = False
        
-    index_black_area = 0
+    index_black_area = 1
     row_index = 0
     next_black_is_upper_line = False
     
@@ -225,8 +224,8 @@ def cut_image_on_bounding_boxes(bounding_boxes, np_img, out_dir):
         matching_col_found = False
         while matching_col_found == False:
             col_index += 1
-            spaces_between_lines = calc_spaces_between_lines(np_img[:,col_index])
-            matching_col_found = is_matching_pattern(spaces_between_lines)  
+            pixel_between_black_structures = calc_pixel_between_black_structures(np_img[:,col_index])
+            matching_col_found = is_matching_pattern(pixel_between_black_structures)  
         
         line_matrix = np_img[upper_left:lower_left,col_index:len_width]
         line_img = Image.fromarray(line_matrix)
@@ -263,7 +262,7 @@ def first_black_left(np_img):
     len_width = np_img.shape[1]
     for x in range(0, len_width):
         col = np_img[:,x]
-        y = find_first_black_pixel_in_col(col)
+        y = find_first_black_pixel_in_col(col.tolist())
         if y > 0:
             return x, y
         
@@ -271,7 +270,7 @@ def first_black_right(np_img):
     len_width = np_img.shape[1]
     for x in range(len_width - 1, -1 , -1):
         col = np_img[:,x]
-        y = find_first_black_pixel_in_col(col)
+        y = find_first_black_pixel_in_col(col.tolist())
         if y > 0:
             return x, y
         
