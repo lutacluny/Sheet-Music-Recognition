@@ -88,3 +88,25 @@ note_to_index = {
         "d,":12,
         "c,":13
         }
+
+output_kind_to_value = {
+    "full":1,
+    "half":2,
+    "quarter":4,
+    }
+
+output_note_to_value = {
+        "a":'a5',
+        "g":'g5',
+        "f":'f5',
+        "e":'e5',
+        "d":'d5',
+        "c":'c5',
+        "b,":'b',
+        "a,":'a',
+        "g,":'g',
+        "f,":'f',
+        "e,":'d',
+        "d,":'d',
+        "c,":'c'
+    }
