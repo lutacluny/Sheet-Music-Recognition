@@ -217,9 +217,9 @@ def is_note_col(col):
 def convert_notes_to_images(notes, out_dir, np_img):
     index = 0
     for note in notes:
-        #if index == 0 or index == len(notes) - 1: #ommit key 
-         #   index += 1
-          #  continue
+        if index == 0 or index == len(notes) - 1: #ommit key 
+            index += 1
+            continue
         note_matrix = np_img[:, note[0]:note[1]]
         note_img = Image.fromarray(note_matrix)
         note_img.save("{}/note_{}.png".format(out_dir, index))
