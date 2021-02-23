@@ -44,3 +44,5 @@ class Union_and_Find():
     def sort_eq_classes_by_members_descending(self):
         self.eq_classes = sorted(self.eq_classes, key=lambda x: x.amount_of_members, reverse=True)
         
+    def sort_eq_classes_by_repr_descending(self):
+        self.eq_classes = sorted(self.eq_classes, key=lambda x: x.repr, reverse=True)

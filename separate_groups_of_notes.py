@@ -16,26 +16,29 @@ import Union_and_Find
 thresh = 140
 fn = lambda x : 255 if x > thresh else 0
 
-amount_black_pixel_deviation = 0.5
+amount_black_pixel_deviation = 1
 tresh_delete_noise_of_marked_cols = 0.05
-seperate_width = 1/100 #per cent of the line width
+seperate_width = 1/15 #per cent of the line width
 
 dir_to_save = "separated_notes"
-dir_to_open = "separated_lines"
+dir_to_open = "groups_to_separate"
 
 def main():    
     for dirName, subdirList, fileList in os.walk(dir_to_open):
+        split = dirName.split('/')
+        
+        if len(split) > 2:
+            
+            test_name = split[1]
+            line_name = split[2]     
+            out_dir = "{}/{}/{}".format(dir_to_save, test_name, line_name)
+        
         for fName in fileList:
             fName.strip()
-            test_name = dirName.split('/')[1]
+
             if test_name[0] == '_':
                 continue
-            f_name_without_png = fName[:-4]
-            out_dir = "{}/{}/{}".format(dir_to_save, test_name, f_name_without_png)
-            
-            if os.path.isdir(out_dir):
-                shutil.rmtree(out_dir)    
-            os.makedirs(out_dir)
+        
 
             img = Image.open("{}/{}".format(dirName,fName))
             np_img = np.asarray(img)
@@ -49,7 +52,7 @@ def main():
             
             col_index = 0
             counter = 0 
-            number_of_cols = 100
+            number_of_cols = 10
             
             amount_black_pixel_array = np.zeros(number_of_cols, dtype=int)
             
@@ -68,12 +71,12 @@ def main():
             
             marked_cols = mark_col_true_if_is_on_a_note(amount_black_pixel, np_img, len_width, len_height)
 
-            distribution = calc_distribution_of_amount_of_related_black_pixel(marked_cols)
-            marked_cols = delete_noise_of_marked_cols(marked_cols, distribution)
+            #distribution = calc_distribution_of_amount_of_related_black_pixel(marked_cols)
+            #marked_cols = delete_noise_of_marked_cols(marked_cols, distribution)
             
             notes = create_list_of_notes(marked_cols)
 
-            convert_notes_to_images(notes, out_dir, np_img)
+            convert_notes_to_images(notes, out_dir, fName, np_img)
 
 
 def calc_spaces_between_lines(col):
@@ -214,15 +217,13 @@ def is_note_col(col):
     else:
         return False
     
-def convert_notes_to_images(notes, out_dir, np_img):
+def convert_notes_to_images(notes, out_dir, fName, np_img):
     index = 0
+    fName = fName[:-4]
     for note in notes:
-        if index == len(notes) - 1: #ommit end line  
-            index += 1
-            continue
         note_matrix = np_img[:, note[0]:note[1]]
         note_img = Image.fromarray(note_matrix)
-        note_img.save("{}/note_{}.png".format(out_dir, index))
+        note_img.save("{}/{}_{}.png".format(out_dir, fName, index))
         index += 1
     
 
