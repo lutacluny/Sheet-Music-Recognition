@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   color="#000000"
+   width="16.319103"
+   height="43.605358"
+   id="svg543">
+  <metadata
+     id="metadata549">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>speed_the_plough (1) tune 1</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs547" />
+  <style
+     type="text/css"
+     id="style2">
+.fill {fill: currentColor}
+.stroke {stroke: currentColor; fill: none}
+text{white-space: pre}
+</style>
+  <title
+     id="title4">speed_the_plough (1) tune 1</title>
+  <!-- Creator: abcm2ps-8.14.11 -->
+  <!-- CreationDate: Feb 23, 2021 14:47 -->
+  <!-- CommandLine: -g speed_the_plough -->
+  <g
+     stroke-width="0.7"
+     id="g6"
+     transform="translate(-57.6123,76.06004)">
+    <!-- title: Speed the Plough -->
+  </g>
+  <g
+     stroke-width="0.7"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:normal;font-family:Times"
+     id="g10"
+     transform="translate(-57.6123,76.06004)">
+    <text
+       x="350.79999"
+       y="22"
+       text-anchor="middle"
+       id="text8">Speed the Plough</text>
+  </g>
+  <g
+     stroke-width="0.7"
+     style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Times"
+     id="g14"
+     transform="translate(-57.6123,76.06004)">
+    <text
+       x="691.59998"
+       y="46"
+       text-anchor="end"
+       id="text12">Trad.</text>
+  </g>
+  <g
+     stroke-width="0.7"
+     style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Times"
+     id="g182"
+     transform="translate(-57.6123,76.06004)">
+    <defs
+       id="defs21">
+      <g
+         id="rdots"
+         class="fill">
+        <circle
+           cx="0"
+           cy="-9"
+           r="1.2"
+           id="circle16" />
+        <circle
+           cx="0"
+           cy="-15"
+           r="1.2"
+           id="circle18" />
+      </g>
+    </defs>
+    <use
+       x="81.5"
+       y="99"
+       xlink:href="#rdots"
+       id="use23"
+       width="100%"
+       height="100%" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 77.5,99 V 75"
+       id="path25" />
+    <path
+       class="stroke"
+       stroke-width="3"
+       d="M 73,99 V 75"
+       id="path27" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 246.9,99 V 75"
+       id="path29" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 411.1,99 V 75"
+       id="path31" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 558.1,99 V 75"
+       id="path33" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 691.6,99 V 75"
+       id="path35" />
+    <path
+       d="M 10,99 H 691.6 M 10,93 H 691.6 M 10,87 H 691.6 M 10,81 H 691.6 M 10,75 h 681.6"
+       class="stroke"
+       id="path37" />
+    <defs
+       id="defs41">
+      <path
+         id="utclef"
+         class="fill"
+         d="m -50,-90 c -72,-41 -72,-158 52,-188 150,-10 220,188 90,256 -114,52 -275,0 -293,-136 -15,-181 93,-229 220,-334 88,-87 79,-133 62,-210 -51,33 -94,105 -89,186 17,267 36,374 49,574 6,96 -19,134 -77,135 -80,1 -126,-93 -61,-133 85,-41 133,101 31,105 23,17 92,37 90,-92 -10,-223 -39,-342 -50,-617 0,-90 0,-162 96,-232 56,72 63,230 22,289 -74,106 -257,168 -255,316 9,153 148,185 252,133 86,-65 29,-192 -80,-176 -71,12 -105,67 -59,124" />
+      <use
+         id="tclef"
+         transform="matrix(0.045,0,0,0.045,0,6)"
+         xlink:href="#utclef"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </defs>
+    <use
+       x="22"
+       y="93"
+       xlink:href="#tclef"
+       id="use43"
+       width="100%"
+       height="100%" />
+    <defs
+       id="defs47">
+      <path
+         id="usharp"
+         class="fill"
+         d="m 136,-702 v 890 h 32 v -890 m 128,840 h 32 V -750 H 296 M 64,-464 v 116 l 338,-96 V -560 M 64,-118 V -2 l 338,-98 v -114" />
+      <use
+         id="sh0"
+         transform="matrix(0.018,0,0,0.018,-4,5)"
+         xlink:href="#usharp"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </defs>
+    <use
+       x="37"
+       y="75"
+       xlink:href="#sh0"
+       id="use49"
+       width="100%"
+       height="100%" />
+    <g
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:normal;font-family:serif"
+       transform="matrix(1.2,0,0,1,53,98.5)"
+       id="g55">
+      <text
+         text-anchor="middle"
+         id="text51">4</text>
+      <text
+         y="-12"
+         text-anchor="middle"
+         id="text53">4</text>
+    </g>
+    <path
+       class="fill"
+       d="m 98.2,71 58.3,-6.9 v 3.2 l -58.3,6.9"
+       id="path57" />
+    <defs
+       id="defs60">
+      <ellipse
+         id="hd"
+         rx="4.0999999"
+         ry="2.9000001"
+         transform="rotate(-20)"
+         class="fill"
+         cx="0"
+         cy="0" />
+    </defs>
+    <use
+       x="95"
+       y="93"
+       xlink:href="#hd"
+       id="use62"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 98.5,93 V 71.9"
+       class="stroke"
+       id="path64" />
+    <use
+       x="114.2"
+       y="90"
+       xlink:href="#hd"
+       id="use66"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 117.7,90 V 69.6"
+       class="stroke"
+       id="path68" />
+    <use
+       x="133.39999"
+       y="87"
+       xlink:href="#hd"
+       id="use70"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 136.9,87 V 67.4"
+       class="stroke"
+       id="path72" />
+    <use
+       x="152.60001"
+       y="84"
+       xlink:href="#hd"
+       id="use74"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 156.1,84 V 65.1"
+       class="stroke"
+       id="path76" />
+    <path
+       class="fill"
+       d="m 170.2,106.2 h 58.3 V 103 h -58.3"
+       id="path78" />
+    <use
+       x="174"
+       y="81"
+       xlink:href="#hd"
+       id="use80"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 170.5,81 v 24.2"
+       class="stroke"
+       id="path82" />
+    <use
+       x="193.2"
+       y="78"
+       xlink:href="#hd"
+       id="use84"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 189.7,78 v 27.2"
+       class="stroke"
+       id="path86" />
+    <use
+       x="212.39999"
+       y="81"
+       xlink:href="#hd"
+       id="use88"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 208.9,81 v 24.2"
+       class="stroke"
+       id="path90" />
+    <use
+       x="231.60001"
+       y="87"
+       xlink:href="#hd"
+       id="use92"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 228.1,87 v 18.2"
+       class="stroke"
+       id="path94" />
+    <path
+       class="fill"
+       d="m 255.5,106.2 h 58.3 V 103 h -58.3"
+       id="path96" />
+    <use
+       x="259.39999"
+       y="81"
+       xlink:href="#hd"
+       id="use98"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 255.9,81 v 24.2"
+       class="stroke"
+       id="path100" />
+    <use
+       x="278.60001"
+       y="78"
+       xlink:href="#hd"
+       id="use102"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 275.1,78 v 27.2"
+       class="stroke"
+       id="path104" />
+    <use
+       x="297.79999"
+       y="81"
+       xlink:href="#hd"
+       id="use106"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 294.3,81 v 24.2"
+       class="stroke"
+       id="path108" />
+    <use
+       x="317"
+       y="87"
+       xlink:href="#hd"
+       id="use110"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 313.5,87 v 18.2"
+       class="stroke"
+       id="path112" />
+    <path
+       class="fill"
+       d="m 334.4,106.2 h 58.3 V 103 h -58.3"
+       id="path114" />
+    <use
+       x="338.20001"
+       y="81"
+       xlink:href="#hd"
+       id="use116"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 334.7,81 v 24.2"
+       class="stroke"
+       id="path118" />
+    <use
+       x="357.39999"
+       y="78"
+       xlink:href="#hd"
+       id="use120"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 353.9,78 v 27.2"
+       class="stroke"
+       id="path122" />
+    <use
+       x="376.60001"
+       y="81"
+       xlink:href="#hd"
+       id="use124"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 373.1,81 v 24.2"
+       class="stroke"
+       id="path126" />
+    <use
+       x="395.79999"
+       y="87"
+       xlink:href="#hd"
+       id="use128"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 392.3,87 v 18.2"
+       class="stroke"
+       id="path130" />
+    <use
+       x="423.60001"
+       y="84"
+       xlink:href="#hd"
+       id="use132"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 420.1,84 v 21"
+       class="stroke"
+       id="path134" />
+    <path
+       class="fill"
+       d="m 449.6,100.1 19.9,3.8 v -3.2 l -19.9,-3.8"
+       id="path136" />
+    <use
+       x="453.39999"
+       y="78"
+       xlink:href="#hd"
+       id="use138"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 449.9,78 V 99.2"
+       class="stroke"
+       id="path140" />
+    <use
+       x="472.60001"
+       y="84"
+       xlink:href="#hd"
+       id="use142"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 469.1,84 v 18.8"
+       class="stroke"
+       id="path144" />
+    <use
+       x="493.79999"
+       y="87"
+       xlink:href="#hd"
+       id="use146"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 490.3,87 v 21"
+       class="stroke"
+       id="path148" />
+    <path
+       class="fill"
+       d="m 519.8,103.1 19.9,3.8 v -3.2 l -19.9,-3.8"
+       id="path150" />
+    <use
+       x="523.59998"
+       y="81"
+       xlink:href="#hd"
+       id="use152"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 520.1,81 v 21.2"
+       class="stroke"
+       id="path154" />
+    <use
+       x="542.79999"
+       y="87"
+       xlink:href="#hd"
+       id="use156"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 539.3,87 v 18.8"
+       class="stroke"
+       id="path158" />
+    <use
+       x="570.59998"
+       y="84"
+       xlink:href="#hd"
+       id="use160"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 567.1,84 v 21"
+       class="stroke"
+       id="path162" />
+    <use
+       x="597.5"
+       y="90"
+       xlink:href="#hd"
+       id="use164"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 601,90 V 69"
+       class="stroke"
+       id="path166" />
+    <use
+       x="627.29999"
+       y="90"
+       xlink:href="#hd"
+       id="use168"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 630.8,90 V 69"
+       class="stroke"
+       id="path170" />
+    <path
+       class="fill"
+       d="m 660.3,66.3 19.9,2.4 v 3.2 l -19.9,-2.4"
+       id="path172" />
+    <use
+       x="657.09998"
+       y="87"
+       xlink:href="#hd"
+       id="use174"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 660.6,87 V 67.4"
+       class="stroke"
+       id="path176" />
+    <use
+       x="676.29999"
+       y="90"
+       xlink:href="#hd"
+       id="use178"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 679.8,90 V 69.6"
+       class="stroke"
+       id="path180" />
+  </g>
+  <g
+     stroke-width="0.7"
+     style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Times"
+     id="g317"
+     transform="translate(-57.6123,76.06004)">
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 225.6,169 V 145"
+       id="path184" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 408.6,169 V 145"
+       id="path186" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 572.8,169 V 145"
+       id="path188" />
+    <path
+       class="stroke"
+       stroke-width="3"
+       d="M 690.1,169 V 145"
+       id="path190" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 685.6,169 V 145"
+       id="path192" />
+    <use
+       x="681.59998"
+       y="169"
+       xlink:href="#rdots"
+       id="use194"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 10,169 H 691.6 M 10,163 H 691.6 M 10,157 H 691.6 M 10,151 H 691.6 M 10,145 h 681.6"
+       class="stroke"
+       id="path196" />
+    <use
+       x="22"
+       y="163"
+       xlink:href="#tclef"
+       id="use198"
+       width="100%"
+       height="100%" />
+    <use
+       x="37"
+       y="145"
+       xlink:href="#sh0"
+       id="use200"
+       width="100%"
+       height="100%" />
+    <path
+       class="fill"
+       d="m 58.2,141.1 65.5,-7.1 v 3.2 l -65.5,7.1"
+       id="path202" />
+    <use
+       x="55"
+       y="163"
+       xlink:href="#hd"
+       id="use204"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 58.5,163 V 142"
+       class="stroke"
+       id="path206" />
+    <use
+       x="76.599998"
+       y="160"
+       xlink:href="#hd"
+       id="use208"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 80.1,160 V 139.7"
+       class="stroke"
+       id="path210" />
+    <use
+       x="98.199997"
+       y="157"
+       xlink:href="#hd"
+       id="use212"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 101.7,157 V 137.3"
+       class="stroke"
+       id="path214" />
+    <use
+       x="119.8"
+       y="154"
+       xlink:href="#hd"
+       id="use216"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 123.3,154 V 135"
+       class="stroke"
+       id="path218" />
+    <path
+       class="fill"
+       d="m 140,176.2 h 65.5 V 173 H 140"
+       id="path220" />
+    <use
+       x="143.8"
+       y="151"
+       xlink:href="#hd"
+       id="use222"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 140.3,151 v 24.2"
+       class="stroke"
+       id="path224" />
+    <use
+       x="165.39999"
+       y="148"
+       xlink:href="#hd"
+       id="use226"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 161.9,148 v 27.2"
+       class="stroke"
+       id="path228" />
+    <use
+       x="187"
+       y="151"
+       xlink:href="#hd"
+       id="use230"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 183.5,151 v 24.2"
+       class="stroke"
+       id="path232" />
+    <use
+       x="208.60001"
+       y="157"
+       xlink:href="#hd"
+       id="use234"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 205.1,157 v 18.2"
+       class="stroke"
+       id="path236" />
+    <path
+       class="fill"
+       d="m 234.2,176.2 h 65.5 V 173 h -65.5"
+       id="path238" />
+    <use
+       x="238.10001"
+       y="151"
+       xlink:href="#hd"
+       id="use240"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 234.6,151 v 24.2"
+       class="stroke"
+       id="path242" />
+    <use
+       x="259.70001"
+       y="148"
+       xlink:href="#hd"
+       id="use244"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 256.2,148 v 27.2"
+       class="stroke"
+       id="path246" />
+    <use
+       x="281.29999"
+       y="151"
+       xlink:href="#hd"
+       id="use248"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 277.8,151 v 24.2"
+       class="stroke"
+       id="path250" />
+    <use
+       x="302.89999"
+       y="157"
+       xlink:href="#hd"
+       id="use252"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 299.4,157 v 18.2"
+       class="stroke"
+       id="path254" />
+    <path
+       class="fill"
+       d="m 323,176.2 h 65.5 V 173 H 323"
+       id="path256" />
+    <use
+       x="326.79999"
+       y="151"
+       xlink:href="#hd"
+       id="use258"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 323.3,151 v 24.2"
+       class="stroke"
+       id="path260" />
+    <use
+       x="348.39999"
+       y="148"
+       xlink:href="#hd"
+       id="use262"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 344.9,148 v 27.2"
+       class="stroke"
+       id="path264" />
+    <use
+       x="370"
+       y="151"
+       xlink:href="#hd"
+       id="use266"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 366.5,151 v 24.2"
+       class="stroke"
+       id="path268" />
+    <use
+       x="391.60001"
+       y="157"
+       xlink:href="#hd"
+       id="use270"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 388.1,157 v 18.2"
+       class="stroke"
+       id="path272" />
+    <use
+       x="421.10001"
+       y="154"
+       xlink:href="#hd"
+       id="use274"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 417.6,154 v 21"
+       class="stroke"
+       id="path276" />
+    <path
+       class="fill"
+       d="m 451,170 22.3,4 v -3.2 l -22.3,-4"
+       id="path278" />
+    <use
+       x="454.89999"
+       y="148"
+       xlink:href="#hd"
+       id="use280"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 451.4,148 v 21.1"
+       class="stroke"
+       id="path282" />
+    <use
+       x="476.5"
+       y="154"
+       xlink:href="#hd"
+       id="use284"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 473,154 v 18.9"
+       class="stroke"
+       id="path286" />
+    <use
+       x="500.5"
+       y="157"
+       xlink:href="#hd"
+       id="use288"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 497,157 v 21"
+       class="stroke"
+       id="path290" />
+    <path
+       class="fill"
+       d="m 530.4,173 22.3,4 v -3.2 l -22.3,-4"
+       id="path292" />
+    <use
+       x="534.29999"
+       y="151"
+       xlink:href="#hd"
+       id="use294"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 530.8,151 v 21.1"
+       class="stroke"
+       id="path296" />
+    <use
+       x="555.90002"
+       y="157"
+       xlink:href="#hd"
+       id="use298"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 552.4,157 v 18.9"
+       class="stroke"
+       id="path300" />
+    <use
+       x="585.29999"
+       y="160"
+       xlink:href="#hd"
+       id="use302"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 588.8,160 V 139"
+       class="stroke"
+       id="path304" />
+    <use
+       x="619.09998"
+       y="166"
+       xlink:href="#hd"
+       id="use306"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 622.6,166 V 145"
+       class="stroke"
+       id="path308" />
+    <defs
+       id="defs311">
+      <path
+         id="Hd"
+         class="fill"
+         d="m 3,-1.6 c -1,-1.8 -7,1.4 -6,3.2 1,1.8 7,-1.4 6,-3.2 m 0.5,-0.3 c 2,3.8 -5,7.6 -7,3.8 -2,-3.8 5,-7.6 7,-3.8" />
+    </defs>
+    <use
+       x="652.90002"
+       y="163"
+       xlink:href="#Hd"
+       id="use313"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 656.4,163 V 142"
+       class="stroke"
+       id="path315" />
+  </g>
+  <g
+     stroke-width="0.7"
+     style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Times"
+     id="g437"
+     transform="translate(-57.6123,76.06004)">
+    <use
+       x="61.5"
+       y="239"
+       xlink:href="#rdots"
+       id="use319"
+       width="100%"
+       height="100%" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 57.5,239 V 215"
+       id="path321" />
+    <path
+       class="stroke"
+       stroke-width="3"
+       d="M 53,239 V 215"
+       id="path323" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 237.3,239 V 215"
+       id="path325" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 376,239 V 215"
+       id="path327" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 541.4,239 V 215"
+       id="path329" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 691.6,239 V 215"
+       id="path331" />
+    <path
+       d="M 10,239 H 691.6 M 10,233 H 691.6 M 10,227 H 691.6 M 10,221 H 691.6 M 10,215 h 681.6"
+       class="stroke"
+       id="path333" />
+    <use
+       x="22"
+       y="233"
+       xlink:href="#tclef"
+       id="use335"
+       width="100%"
+       height="100%" />
+    <use
+       x="37"
+       y="215"
+       xlink:href="#sh0"
+       id="use337"
+       width="100%"
+       height="100%" />
+    <use
+       x="75"
+       y="212"
+       xlink:href="#hd"
+       id="use339"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 71.5,212 v 21"
+       class="stroke"
+       id="path341" />
+    <path
+       class="fill"
+       d="m 105.2,233.3 22.4,2.4 v -3.2 l -22.4,-2.4"
+       id="path343" />
+    <use
+       x="109.1"
+       y="212"
+       xlink:href="#hd"
+       id="use345"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 105.6,212 v 20.3"
+       class="stroke"
+       id="path347" />
+    <use
+       x="130.8"
+       y="215"
+       xlink:href="#hd"
+       id="use349"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 127.3,215 v 19.7"
+       class="stroke"
+       id="path351" />
+    <path
+       class="fill"
+       d="m 151.2,242.8 66,5.1 v -3.2 l -66,-5.1"
+       id="path353" />
+    <use
+       x="155"
+       y="212"
+       xlink:href="#hd"
+       id="use355"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 151.5,212 v 29.8"
+       class="stroke"
+       id="path357" />
+    <use
+       x="176.8"
+       y="221"
+       xlink:href="#hd"
+       id="use359"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 173.3,221 v 22.5"
+       class="stroke"
+       id="path361" />
+    <use
+       x="198.5"
+       y="227"
+       xlink:href="#hd"
+       id="use363"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 195,227 v 18.2"
+       class="stroke"
+       id="path365" />
+    <use
+       x="220.3"
+       y="221"
+       xlink:href="#hd"
+       id="use367"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 216.8,221 v 25.9"
+       class="stroke"
+       id="path369" />
+    <use
+       x="249.8"
+       y="212"
+       xlink:href="#hd"
+       id="use371"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 246.3,212 v 21"
+       class="stroke"
+       id="path373" />
+    <use
+       x="283.89999"
+       y="215"
+       xlink:href="#hd"
+       id="use375"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 280.4,215 v 21"
+       class="stroke"
+       id="path377" />
+    <use
+       x="318"
+       y="218"
+       xlink:href="#hd"
+       id="use379"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 314.5,218 v 21"
+       class="stroke"
+       id="path381" />
+    <use
+       x="352"
+       y="221"
+       xlink:href="#hd"
+       id="use383"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 348.5,221 v 21"
+       class="stroke"
+       id="path385" />
+    <use
+       x="388.5"
+       y="224"
+       xlink:href="#hd"
+       id="use387"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 385,224 v 21"
+       class="stroke"
+       id="path389" />
+    <path
+       class="fill"
+       d="m 418.8,240 22.4,4 v -3.2 l -22.4,-4"
+       id="path391" />
+    <use
+       x="422.60001"
+       y="218"
+       xlink:href="#hd"
+       id="use393"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 419.1,218 v 21.1"
+       class="stroke"
+       id="path395" />
+    <use
+       x="444.39999"
+       y="224"
+       xlink:href="#hd"
+       id="use397"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 440.9,224 v 18.9"
+       class="stroke"
+       id="path399" />
+    <use
+       x="468.5"
+       y="227"
+       xlink:href="#hd"
+       id="use401"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 465,227 v 21"
+       class="stroke"
+       id="path403" />
+    <path
+       class="fill"
+       d="m 498.8,243 22.4,4 v -3.2 l -22.4,-4"
+       id="path405" />
+    <use
+       x="502.60001"
+       y="221"
+       xlink:href="#hd"
+       id="use407"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 499.1,221 v 21.1"
+       class="stroke"
+       id="path409" />
+    <use
+       x="524.40002"
+       y="227"
+       xlink:href="#hd"
+       id="use411"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 520.9,227 v 18.9"
+       class="stroke"
+       id="path413" />
+    <use
+       x="553.90002"
+       y="224"
+       xlink:href="#hd"
+       id="use415"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 550.4,224 v 21"
+       class="stroke"
+       id="path417" />
+    <use
+       x="584.59998"
+       y="230"
+       xlink:href="#hd"
+       id="use419"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 588.1,230 V 209"
+       class="stroke"
+       id="path421" />
+    <use
+       x="618.70001"
+       y="230"
+       xlink:href="#hd"
+       id="use423"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 622.2,230 V 209"
+       class="stroke"
+       id="path425" />
+    <path
+       class="fill"
+       d="m 648.9,241 22.4,-4 v -3.2 l -22.4,4"
+       id="path427" />
+    <use
+       x="652.79999"
+       y="221"
+       xlink:href="#hd"
+       id="use429"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 649.3,221 v 18.9"
+       class="stroke"
+       id="path431" />
+    <use
+       x="674.59998"
+       y="215"
+       xlink:href="#hd"
+       id="use433"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 671.1,215 v 21.1"
+       class="stroke"
+       id="path435" />
+  </g>
+  <g
+     stroke-width="0.7"
+     style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Times"
+     id="g541"
+     transform="translate(-57.6123,76.06004)">
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 224.1,309 V 285"
+       id="path439" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 377.3,309 V 285"
+       id="path441" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 559.9,309 V 285"
+       id="path443" />
+    <path
+       class="stroke"
+       stroke-width="3"
+       d="M 690.1,309 V 285"
+       id="path445" />
+    <path
+       class="stroke"
+       stroke-width="1"
+       d="M 685.6,309 V 285"
+       id="path447" />
+    <use
+       x="681.59998"
+       y="309"
+       xlink:href="#rdots"
+       id="use449"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 10,309 H 691.6 M 10,303 H 691.6 M 10,297 H 691.6 M 10,291 H 691.6 M 10,285 h 681.6"
+       class="stroke"
+       id="path451" />
+    <use
+       x="22"
+       y="303"
+       xlink:href="#tclef"
+       id="use453"
+       width="100%"
+       height="100%" />
+    <use
+       x="37"
+       y="285"
+       xlink:href="#sh0"
+       id="use455"
+       width="100%"
+       height="100%" />
+    <use
+       x="55"
+       y="282"
+       xlink:href="#hd"
+       id="use457"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 51.5,282 v 21"
+       class="stroke"
+       id="path459" />
+    <path
+       class="fill"
+       d="m 88.9,303.3 24.7,2.5 v -3.2 l -24.7,-2.5"
+       id="path461" />
+    <use
+       x="92.800003"
+       y="282"
+       xlink:href="#hd"
+       id="use463"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 89.3,282 v 20.3"
+       class="stroke"
+       id="path465" />
+    <use
+       x="116.8"
+       y="285"
+       xlink:href="#hd"
+       id="use467"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 113.3,285 v 19.7"
+       class="stroke"
+       id="path469" />
+    <use
+       x="143.60001"
+       y="282"
+       xlink:href="#hd"
+       id="use471"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 140.1,282 v 21"
+       class="stroke"
+       id="path473" />
+    <path
+       class="fill"
+       d="m 177.5,317.1 24.7,-4.1 v -3.2 l -24.7,4.1"
+       id="path475" />
+    <use
+       x="181.3"
+       y="297"
+       xlink:href="#hd"
+       id="use477"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 177.8,297 v 19"
+       class="stroke"
+       id="path479" />
+    <use
+       x="205.39999"
+       y="291"
+       xlink:href="#hd"
+       id="use481"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 201.9,291 v 21"
+       class="stroke"
+       id="path483" />
+    <use
+       x="237.5"
+       y="282"
+       xlink:href="#hd"
+       id="use485"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 234,282 v 21"
+       class="stroke"
+       id="path487" />
+    <use
+       x="275.29999"
+       y="285"
+       xlink:href="#hd"
+       id="use489"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 271.8,285 v 21"
+       class="stroke"
+       id="path491" />
+    <use
+       x="313.10001"
+       y="288"
+       xlink:href="#hd"
+       id="use493"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 309.6,288 v 21"
+       class="stroke"
+       id="path495" />
+    <use
+       x="350.79999"
+       y="291"
+       xlink:href="#hd"
+       id="use497"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 347.3,291 v 21"
+       class="stroke"
+       id="path499" />
+    <use
+       x="390.70001"
+       y="294"
+       xlink:href="#hd"
+       id="use501"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 387.2,294 v 21"
+       class="stroke"
+       id="path503" />
+    <path
+       class="fill"
+       d="m 424.6,309.9 24.7,4.1 v -3.2 l -24.7,-4.1"
+       id="path505" />
+    <use
+       x="428.5"
+       y="288"
+       xlink:href="#hd"
+       id="use507"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 425,288 v 21"
+       class="stroke"
+       id="path509" />
+    <use
+       x="452.5"
+       y="294"
+       xlink:href="#hd"
+       id="use511"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 449,294 v 19"
+       class="stroke"
+       id="path513" />
+    <use
+       x="479.29999"
+       y="297"
+       xlink:href="#hd"
+       id="use515"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 475.8,297 v 21"
+       class="stroke"
+       id="path517" />
+    <path
+       class="fill"
+       d="m 513.2,312.9 24.7,4.1 v -3.2 l -24.7,-4.1"
+       id="path519" />
+    <use
+       x="517"
+       y="291"
+       xlink:href="#hd"
+       id="use521"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 513.5,291 v 21"
+       class="stroke"
+       id="path523" />
+    <use
+       x="541.09998"
+       y="297"
+       xlink:href="#hd"
+       id="use525"
+       width="100%"
+       height="100%" />
+    <path
+       d="m 537.6,297 v 19"
+       class="stroke"
+       id="path527" />
+    <use
+       x="573.29999"
+       y="300"
+       xlink:href="#hd"
+       id="use529"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 576.8,300 V 279"
+       class="stroke"
+       id="path531" />
+    <use
+       x="611"
+       y="306"
+       xlink:href="#hd"
+       id="use533"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 614.5,306 V 285"
+       class="stroke"
+       id="path535" />
+    <use
+       x="648.79999"
+       y="303"
+       xlink:href="#Hd"
+       id="use537"
+       width="100%"
+       height="100%" />
+    <path
+       d="M 652.3,303 V 282"
+       class="stroke"
+       id="path539" />
+  </g>
+  <use
+     x="22"
+     y="93"
+     xlink:href="#tclef"
+     id="use43-3"
+     style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Times"
+     width="100%"
+     height="100%"
+     transform="translate(-12.892158,-64.08)" />
+</svg>
