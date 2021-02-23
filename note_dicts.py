@@ -7,8 +7,8 @@ Created on Tue Jan 12 10:59:53 2021
 """
 
 lines = {
-        "width":20.0,
-        "height":25.0,
+        "width":49.4,
+        "height":24.7,
         "name":"lines"
         }
 
@@ -23,7 +23,12 @@ help_line_full = {
         "height":0.7,
         "name":"help_line_full"
         }
-    
+
+
+kinds_bottom = ["half_bottom", "quarter_bottom", "eigth_bottom"]
+kinds_top = ["half_top", "quarter_top", "eigth_top"]
+
+  
 full = {
         "width":11.2,
         "height":6.0,
@@ -57,12 +62,28 @@ quarter_top = {
         "name":"quarter_top"
         }  
 
+eigth_bottom = {
+        "width":7.978,
+        "height":6.129,
+        "name":"quarter_bottom"
+        }
+
+eigth_top = {
+        "width":7.957,
+        "height":6.129,
+        "total_height":24.065,
+        "name":"quarter_top"
+        }  
+
+
 kind_dict = {
     "full":full,
     "half_bottom":half_bottom,
     "half_top":half_top,
     "quarter_bottom":quarter_bottom,
-    "quarter_top":quarter_top
+    "quarter_top":quarter_top,
+    "eigth_bottom":eigth_bottom,
+    "eigth_top":eigth_top
     }
 
 help_line_dict = {
@@ -70,7 +91,9 @@ help_line_dict = {
     "half_bottom":help_line,
     "half_top":help_line,
     "quarter_bottom":help_line,
-    "quarter_top":help_line
+    "quarter_top":help_line,
+    "eigth_bottom":help_line,
+    "eigth_top":help_line
     }
 
 note_to_index = {
@@ -93,9 +116,10 @@ output_kind_to_value = {
     "full":1,
     "half":2,
     "quarter":4,
+    "eigth":8,
     }
 
-output_note_to_value = {
+output_note_to_value_key_g = {
         "a":'a5',
         "g":'g5',
         "f":'f5',
@@ -109,4 +133,20 @@ output_note_to_value = {
         "e,":'d',
         "d,":'d',
         "c,":'c'
+    }
+
+output_note_to_value_key_f = {
+        "a":'c',
+        "g":'b4',
+        "f":'a4',
+        "e":'g4',
+        "d":'f4',
+        "c":'e4',
+        "b,":'d3',
+        "a,":'c3',
+        "g,":'b3',
+        "f,":'a3',
+        "e,":'g3',
+        "d,":'f3',
+        "c,":'e3'
     }

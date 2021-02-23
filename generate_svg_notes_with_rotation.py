@@ -9,10 +9,8 @@ Created on Mon Jan 11 17:23:30 2021
 import os 
 import shutil
 from svgutils.compose import Figure, SVG
-from note_dicts import kind_dict, help_line_dict, lines, note_to_index 
+from note_dicts import kinds_top, kinds_bottom, kind_dict, help_line_dict, lines, note_to_index 
 
-kinds_bottom = ["half_bottom", "quarter_bottom", ]
-kinds_top = ["half_top", "quarter_top"]
 
 ''' Define the output resolution as follows: 
     width = 20 * scaling_lines 
@@ -22,16 +20,16 @@ scaling_lines = 2
 note_height_in_relation_to_line_gap = 1.0
 
 tol_x = 0.20
-amount_of_notes_in_x_range = 5
+amount_of_notes_in_x_range = 3
 
 tol_y = 0.05
-amount_of_notes_in_y_range = 5
+amount_of_notes_in_y_range = 3
 
 angle_bounds = (-2,4) # (min_angle, max_angle)
 number_of_notes_in_angle_range = 3
 
 scaling_note_deviation = 0.2
-number_of_notes_different_sizes = 5
+number_of_notes_different_sizes = 3
 
 line_gap = (lines["height"] * scaling_lines) / 4.0
 svg_out_width = lines["width"] * scaling_lines
