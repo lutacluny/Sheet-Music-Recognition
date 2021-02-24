@@ -14,87 +14,87 @@ lines = {
 
 pause_full = {
     "width":7.0 ,
-    "heigth":3.0 ,
+    "height":3.0 ,
     "name":"pause_full"}
  
 pause_half = {
     "width":7.0 ,
-    "heigth":3.0 ,
+    "height":3.0 ,
     "name":"pause_half"}
  
 pause_quarter = {
     "width": 4.832,
-    "heigth": 17.2,
+    "height": 17.2,
     "name":"pause_quarter"}
  
 pause_eigth = {
     "width": 6.771,
-    "heigth": 10.561,
+    "height": 10.561,
     "name":"pause_eigth"}
  
 beat_C = {
     "width": 9.156,
-    "heigth": 12.102,
+    "height": 12.102,
     "name":"beat_C"}
  
 beat_4_4 = {
     "width": 11.784,
-    "heigth": 23.875,
+    "height": 23.875,
     "name":"beat_4_4"}
 
 beat_3_4 = {
     "width": 11.784,
-    "heigth": 23.875,
+    "height": 23.875,
     "name":"beat_3_4"}
  
 beat_2_4 = {
     "width": 11.784,
-    "heigth": 23.875,
+    "height": 23.875,
     "name":"beat_2_4"}
  
 beat_6_8 = {
     "width": 11.334,
-    "heigth": 24.102,
+    "height": 24.102,
     "name":"beat_6_8"}
  
 double_sharp = {
     "width": 11.584,
-    "heigth": 25.884,
+    "height": 25.884,
     "name":"double_sharp"}
  
 single_sharp = {
     "width": 6.084,
-    "heigth": 16.884,
+    "height": 16.884,
     "name":"single_sharp"}
  
 double_flat = {
     "width": 10.28,
-    "heigth": 22.284,
+    "height": 22.284,
     "name":"double_flat"}
  
 single_flat = {
     "width": 4.78,
-    "heigth": 13.284,
+    "height": 13.284,
     "name":"single_flat"}
  
 repeat_start = {
     "width": 11.2,
-    "heigth": 24.0,
+    "height": 24.0,
     "name":"repeat_start"}
  
 repeat_end = {
     "width": 11.2,
-    "heigth": 24.0,
+    "height": 24.0,
     "name":"repeat_end"}
  
 g_key = {
     "width": 16.319,
-    "heigth": 43.605,
+    "height": 43.605,
     "name":"g_key"}
  
 f_key = {
     "width": 18.360,
-    "heigth": 20.129,
+    "height": 20.129,
     "name":"f_key"}
  
 symbol_dict = {
@@ -116,6 +116,12 @@ symbol_dict = {
     "repeat_start":repeat_start,
     "repeat_end":repeat_end
     }
+
+symbol_pos_centered = [beat_2_4, beat_3_4, beat_4_4, beat_6_8, beat_C, 
+                       repeat_start, repeat_end, 
+                       pause_half, pause_quarter, pause_eigth, 
+                       double_flat, single_flat, double_sharp, single_sharp]
+
 
 
 note_to_index = {
@@ -149,7 +155,7 @@ output_symbol_to_abc = {
     "single_flat":"K:Bb" ,
     "double_sharp":"K:D", 
     "single_sharp":"K:F" ,
-    "f_key":", clef=bass" ,
+    "f_key":" clef=bass" ,
     "g_key":"",
     "repeat_start":"|:",
     "repeat_end":":|"

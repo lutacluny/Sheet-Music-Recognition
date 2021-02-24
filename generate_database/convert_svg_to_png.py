@@ -13,13 +13,17 @@ import os
 category = 'notes'
 
 def main():
-    if os.path.isdir("png_{}".format(category)):
-        shutil.rmtree("png_{}".format(category))
+    if os.path.isdir("png_objects"):
+        shutil.rmtree("png_objects")
 
-    shutil.copytree("svg_{}".format(category), "png_{}".format(category))
-
-
-    for dirName, subdirList, fileList in os.walk("png_{}".format(category)):
+    shutil.copytree("svg_{}".format(category), "png_objects")
+    
+    for dirName, subdirList, fileList in os.walk("svg_symbols"):
+        for subDir in subdirList:
+            shutil.copytree("{}/{}".format(dirName, subDir), "png_objects/{}".format(subDir))
+        break
+        
+    for dirName, subdirList, fileList in os.walk("png_objects"):
         for fName in fileList:
             svgLocation = "{}/{}".format(dirName, fName)
 

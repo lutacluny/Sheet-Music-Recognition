@@ -1,5 +1,7 @@
 generate_database/png_notes/
 generate_database/svg_notes/
+generate_database/png_objects/
+generate_database/svg_symbols/
 generate_database/__pycache__/
 object_detection/__pycache__/
 object_detection/groups_to_separate/
