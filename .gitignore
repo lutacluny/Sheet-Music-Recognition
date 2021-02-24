@@ -1,7 +1,8 @@
-/jpg_notes
-/png_notes
-/separated_lines
-/separated_notes
-/groups_to_separate
-/svg_notes
-/__pycache__
+generate_database/png_notes/
+generate_database/svg_notes/
+generate_database/__pycache__/
+object_detection/__pycache__/
+object_detection/groups_to_separate/
+object_detection/separated_lines/
+object_detection/separated_notes/
+__pycache__/
