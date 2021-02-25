@@ -112,41 +112,16 @@ note_to_index = {
         "c,":13
         }
 
-output_kind_to_value = {
+kind_to_value = {
     "full":1,
     "half":2,
     "quarter":4,
     "eigth":8,
     }
 
-output_note_to_value_key_g = {
-        "a":'a5',
-        "g":'g5',
-        "f":'f5',
-        "e":'e5',
-        "d":'d5',
-        "c":'c5',
-        "b,":'b',
-        "a,":'a',
-        "g,":'g',
-        "f,":'f',
-        "e,":'d',
-        "d,":'d',
-        "c,":'c'
-    }
+index_to_note_key_g = ['a5','g5','f5','e5','d5','c5',
+                       'b','a','g','f','e','d','c']
 
-output_note_to_value_key_f = {
-        "a":'c',
-        "g":'b4',
-        "f":'a4',
-        "e":'g4',
-        "d":'f4',
-        "c":'e4',
-        "b,":'d3',
-        "a,":'c3',
-        "g,":'b3',
-        "f,":'a3',
-        "e,":'g3',
-        "d,":'f3',
-        "c,":'e3'
-    }
+index_to_note_key_f = ['c',
+                       'b3','a3','g3','f3','e3','d3','c3',
+                       'b2','a2','g2','f2','e2']

@@ -12,70 +12,70 @@ lines = {
         "name":"lines"
         }
 
-pause_full = {
+z_full = {
     "width":7.0 ,
     "height":3.0 ,
-    "name":"pause_full"}
+    "name":"z_full"}
  
-pause_half = {
+z_half = {
     "width":7.0 ,
     "height":3.0 ,
-    "name":"pause_half"}
+    "name":"z_half"}
  
-pause_quarter = {
+z_quarter = {
     "width": 4.832,
     "height": 17.2,
-    "name":"pause_quarter"}
+    "name":"z_quarter"}
  
-pause_eigth = {
+z_eigth = {
     "width": 6.771,
     "height": 10.561,
-    "name":"pause_eigth"}
+    "name":"z_eigth"}
  
-beat_C = {
+M_C = {
     "width": 9.156,
     "height": 12.102,
-    "name":"beat_C"}
+    "name":"M_C"}
  
-beat_4_4 = {
+M_4_4 = {
     "width": 11.784,
     "height": 23.875,
-    "name":"beat_4_4"}
+    "name":"M_4_4"}
 
-beat_3_4 = {
+M_3_4 = {
     "width": 11.784,
     "height": 23.875,
-    "name":"beat_3_4"}
+    "name":"M_3_4"}
  
-beat_2_4 = {
+M_2_4 = {
     "width": 11.784,
     "height": 23.875,
-    "name":"beat_2_4"}
+    "name":"M_2_4"}
  
-beat_6_8 = {
+M_6_8 = {
     "width": 11.334,
     "height": 24.102,
-    "name":"beat_6_8"}
+    "name":"M_6_8"}
  
-double_sharp = {
+K_Bb = {
     "width": 11.584,
     "height": 25.884,
-    "name":"double_sharp"}
+    "name":"K_Bb"}
  
-single_sharp = {
+K_F = {
     "width": 6.084,
     "height": 16.884,
-    "name":"single_sharp"}
+    "name":"K_F"}
  
-double_flat = {
+K_D = {
     "width": 10.28,
     "height": 22.284,
-    "name":"double_flat"}
+    "name":"K_D"}
  
-single_flat = {
+K_G = {
     "width": 4.78,
     "height": 13.284,
-    "name":"single_flat"}
+    "name":"K_G"}
  
 repeat_start = {
     "width": 11.2,
@@ -87,40 +87,40 @@ repeat_end = {
     "height": 24.0,
     "name":"repeat_end"}
  
-g_key = {
+K_C = {
     "width": 16.319,
     "height": 43.605,
-    "name":"g_key"}
+    "name":"K_C"}
  
-f_key = {
+K_C_cleff_bass = {
     "width": 18.360,
     "height": 20.129,
-    "name":"f_key"}
+    "name":"K_C_cleff_bass"}
  
 symbol_dict = {
-    "pause_full":pause_full ,
-    "pause_half":pause_half ,
-    "pause_quarter":pause_quarter ,
-    "pause_eigth":pause_eigth ,
-    "beat_2_4": beat_2_4 ,
-    "beat_3_4": beat_3_4 ,
-    "beat_4_4": beat_4_4 ,
-    "beat_6_8":beat_6_8 ,
-    "beat_C":beat_C ,
-    "double_flat":double_flat ,
-    "single_flat":single_flat ,
-    "double_sharp":double_sharp, 
-    "single_sharp":single_sharp ,
-    "f_key":f_key ,
-    "g_key":g_key,
+    "z_full":z_full ,
+    "z_half":z_half ,
+    "z_quarter":z_quarter ,
+    "z_eigth":z_eigth ,
+    "M_2_4": M_2_4 ,
+    "M_3_4": M_3_4 ,
+    "M_4_4": M_4_4 ,
+    "M_6_8":M_6_8 ,
+    "M_C":M_C ,
+    "K_D":K_D ,
+    "K_G":K_G ,
+    "K_Bb":K_Bb, 
+    "K_F":K_F ,
+    "K_C_cleff_bass":K_C_cleff_bass ,
+    "K_C":K_C,
     "repeat_start":repeat_start,
     "repeat_end":repeat_end
     }
 
-symbol_pos_centered = [beat_2_4, beat_3_4, beat_4_4, beat_6_8, beat_C, 
+symbol_pos_centered = [M_2_4, M_3_4, M_4_4, M_6_8, M_C, 
                        repeat_start, repeat_end, 
-                       pause_half, pause_quarter, pause_eigth, 
-                       double_flat, single_flat, double_sharp, single_sharp]
+                       z_half, z_quarter, z_eigth, 
+                       K_D, K_G, K_Bb, K_F]
 
 
 
@@ -141,22 +141,13 @@ note_to_index = {
         }
 
 
-output_symbol_to_abc = {
-    "pause_full":"z" ,
-    "pause_half":"z/2" ,
-    "pause_quarter":"z/4" ,
-    "pause_eigth":"z/8" ,
-    "beat_2_4": "M:2/4" ,
-    "beat_3_4": "M:3/4" ,
-    "beat_4_4": "M:4/4" ,
-    "beat_6_8":"M:6/8" ,
-    "beat_C":"M:C" ,
-    "double_flat":"K:F" ,
-    "single_flat":"K:Bb" ,
-    "double_sharp":"K:D", 
-    "single_sharp":"K:F" ,
-    "f_key":" clef=bass" ,
-    "g_key":"",
-    "repeat_start":"|:",
-    "repeat_end":":|"
+symbol_to_value = {
+    "z":"r",
+    "M":"M",
+    "G":"G",
+    "D":"D",
+    "F":"F",
+    "Bb":"Bb",
+    "K":"K" ,
+    "repeat":"repeat"
 }

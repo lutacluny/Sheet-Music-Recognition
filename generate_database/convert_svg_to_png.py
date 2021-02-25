@@ -23,6 +23,11 @@ def main():
             shutil.copytree("{}/{}".format(dirName, subDir), "png_objects/{}".format(subDir))
         break
         
+    for dirName, subdirList, fileList in os.walk("svg_notes_grouped"):
+        for subDir in subdirList:
+            shutil.copytree("{}/{}".format(dirName, subDir), "png_objects/{}".format(subDir))
+        break
+    
     for dirName, subdirList, fileList in os.walk("png_objects"):
         for fName in fileList:
             svgLocation = "{}/{}".format(dirName, fName)
