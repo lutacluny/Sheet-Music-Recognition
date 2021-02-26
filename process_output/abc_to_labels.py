@@ -15,8 +15,12 @@ def main():
         shutil.rmtree(label_dir)
     os.mkdir(label_dir) 
     
-    for dirName, subdirList, fileList in os.walk("abc_files"):
+    for dirName, subdirList, fileList in os.walk(abc_dir):
         for f_name in fileList:
+            f_name = f_name.strip()
+            if f_name[0] == "_":
+                continue
+            
             process_file(f_name)
             
             
@@ -73,9 +77,10 @@ def parse_body(lines, index_body ):
             continue
         
         for item in line.split(" "):
+            item = item.strip()
             if len(item) == 0:
                 continue
-            item = item.strip()
+            
             
             if item == "|":
                 continue

@@ -8,4 +8,5 @@ object_detection/__pycache__/
 object_detection/groups_to_separate/
 object_detection/separated_lines/
 object_detection/separated_notes/
+process_output/audios/
 __pycache__/

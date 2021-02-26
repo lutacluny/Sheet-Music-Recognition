@@ -6,17 +6,30 @@ Created on Tue Feb  9 12:03:04 2021
 @author: fritz
 """
 
+import os, shutil
 import tomita.legacy.pysynth as ps
 from note_dicts import index_to_note_key_f, index_to_note_key_g, note_to_index, kind_to_value
 from symbol_dicts import symbol_to_value 
 
-f_name = 'label_files/Simple Melody'
-            
+dir_labels = 'label_files'
+dir_audio = 'audios'       
 
     
 def main():    
-    musical_object_list = parse_list(f_name)
-    ps.make_wav(musical_object_list, fn = "prediction.wav") 
+    if os.path.isdir(dir_audio):
+        shutil.rmtree(dir_audio)
+    os.mkdir(dir_audio) 
+    
+    for dirName, subdirList, fileList in os.walk(dir_labels):
+        for f_name in fileList:
+            f_name = f_name.strip()
+            if f_name[0] == "_":
+                continue
+                
+            f = "{}/{}".format(dir_labels,f_name)
+            musical_object_list = parse_list(f)
+            f_out = "{}/{}".format(dir_audio, f_name)
+            ps.make_wav(musical_object_list, fn = f_out) 
    
     
 def parse_list(f_name):
@@ -77,7 +90,11 @@ def parse_list(f_name):
 
                     
             else:
-                index = note_to_index[musical_object] - 1
+                try:
+                    index = note_to_index[musical_object] - 1
+                except KeyError:
+                    print(f_name, item) 
+                    
                 output_kind = kind_to_value[kind]
                 
                 if is_g_key:
