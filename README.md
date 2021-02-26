@@ -7,3 +7,34 @@ Goal: Write simple melody on a sheet of paper and let the software transform it 
 Restrictions: Recognize only notes in the range c, to a and of kind full, half, quarter.
 
 Dataset: The dataset is sampled by hand from abc .svg files.
+
+
+## Generate the data set 
+In 'generate_dataset' execute the following scripts in the given order. The data set contains the respective png images of the musical notation and can be found in 'generate_dataset/png_objects'.
+
+1. generate_svg_notes_with_rotation.py
+2. generate_svg_notes_grouped_with_rotation.py
+3. generate_svg_symbols_with_rotation.py
+4. convert_svg_to_png.py
+ 
+## Detect the objects 
+
+In 'object_detection' execute the following scripts in the given order. The output can be found in 'object_detection/separated_notes'. There is on directory for each tune containing its rows as subdirectories. 
+
+1. identify_lines.py
+2. separate_notes.py
+3. identify_groups_of_notes.py
+4. separate_groups_of_notes.py
+
+## Classify the objects 
+TODO: Save the output labels in a text file containing the label of the rows in the respective line. See 'process_output/output_label_files'.
+
+## Convert to audio file 
+n 'process_output' execute the following script. The audio files can be accessed in 'process_output/audios'
+
+1. output_to_wav.py
+
+## Get the results
+In 'process_output' execute the following script. It will compare each label to the ground truth given in 'process_output\label_files' and print the result to the console. 
+
+1. compare_labels.py

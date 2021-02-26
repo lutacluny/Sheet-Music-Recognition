@@ -50,7 +50,7 @@ def main():
     draw_f_key() 
     
 def draw_g_key():
-    symbol = symbol_dict["g_key"]
+    symbol = symbol_dict["K_C"]
     scaled_width_symbol, scaled_height_symbol = scale_symbol(symbol)
     
     global x_centered
@@ -64,7 +64,7 @@ def draw_g_key():
     draw_symbols(scaled_width_symbol,scaled_height_symbol,x_symbol, y_symbol, symbol)
 
 def draw_f_key():
-    symbol = symbol_dict["f_key"]
+    symbol = symbol_dict["K_C_cleff_bass"]
     scaled_width_symbol, scaled_height_symbol = scale_symbol(symbol)
     
     global x_centered
