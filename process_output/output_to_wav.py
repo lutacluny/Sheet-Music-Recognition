@@ -10,7 +10,7 @@ import tomita.legacy.pysynth as ps
 from note_dicts import index_to_note_key_f, index_to_note_key_g, note_to_index, kind_to_value
 from symbol_dicts import symbol_to_value 
 
-f_name = 'Der Mond ist aufgegangen_labeled'
+f_name = 'label_files/Fuchs du hast die Gans gestohlen'
             
 
     

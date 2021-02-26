@@ -5,20 +5,34 @@ Created on Thu Feb 25 13:41:52 2021
 
 @author: fritz
 """
+import os, shutil
 
-f_name = "test_abc_files/Der Mond ist aufgegangen"
+abc_dir = "abc_files"
+label_dir = "label_files"
+
 def main():
+    if os.path.isdir(label_dir):
+        shutil.rmtree(label_dir)
+    os.mkdir(label_dir) 
+    
+    for dirName, subdirList, fileList in os.walk("abc_files"):
+        for f_name in fileList:
+            process_file(f_name)
+            
+            
+def process_file(f_name):
     header = [] 
     body = []
-    
-    lines = open(f_name).readlines()
+    f_name_in = "{}/{}".format(abc_dir, f_name) 
+    lines = open(f_name_in).readlines()
     
     header, index_body = parse_header(lines) 
     
     body = parse_body(lines, index_body)
     
-    f_output = open("Der Mond ist aufgegangen_labeled", "w")
-    f_output.writelines(header+body)
+    f_name_out = "{}/{}".format(label_dir,f_name)
+    f_out = open(f_name_out, "w")
+    f_out.writelines(header+body)
     
 def parse_header(lines):
     header = [] 
@@ -63,37 +77,44 @@ def parse_body(lines, index_body ):
             if len(item) == 0:
                 continue
             item = item.strip()
-            if item == "|":
-                continue 
             
-            if len(item) > 1:
-                if item[0:1] == "|:":
-                    new_item = "repeat_start"
+            if item == "|":
+                continue
+     
+            elif item == "|:":
+                new_item = "repeat_start"
                 
-                if item[0:1] == ":|":
-                    new_item = "repeat_end"
+            elif item == ":|":
+                new_item = "repeat_end"         
 
-            new_item = item.replace("/","_")
+            else: 
                 
-            if len(new_item) <= 1:
-                new_item = item + "_full"
+                new_item = item.replace("/","_")
+                splitted = new_item.split("_")
+                
+                if len(splitted) == 1:
+                    new_item = item + "_full"
                     
-            else:
-                kind = new_item.split("_")[1]
+                else:
+                    kind = splitted[1]
                 
-                if kind == "2":
-                    new_item = new_item.replace("2","half")
+                    if kind == "2":
+                        new_item = new_item.replace("2","half")
     
-                if kind == "4":
-                    new_item = new_item.replace("4","quarter")
+                    if kind == "4":
+                        new_item = new_item.replace("4","quarter")
                     
-                if kind == "8":
-                    new_item = new_item.replace("8","eigth")   
+                    if kind == "8":
+                        new_item = new_item.replace("8","eigth")   
                 
             body.append(new_item + " ")
             
         body.append("\n")
         
     return body
+
+
+
+    
 if __name__ =='__main__':
     main()
