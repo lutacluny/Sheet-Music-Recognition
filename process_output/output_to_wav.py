@@ -10,7 +10,7 @@ import tomita.legacy.pysynth as ps
 from note_dicts import index_to_note_key_f, index_to_note_key_g, note_to_index, kind_to_value
 from symbol_dicts import symbol_to_value 
 
-f_name = 'label_files/Fuchs du hast die Gans gestohlen'
+f_name = 'label_files/Simple Melody'
             
 
     
@@ -92,52 +92,89 @@ def parse_list(f_name):
     return musical_object_prediction
 
 def process_note_g_key(index):
-    if is_single_flat:
-        output_object = index_to_note_key_g[index] + "b"
-                    
-    elif is_double_flat:
-        if index - 1 < 0:
-            output_object = 'b3'
+    note = index_to_note_key_g[index] 
+    
+    if is_single_sharp:
+        if note[0] == "f":
+            if len(note) == 1:
+                output_object = note + "#"
+            else:
+                output_object = "{}#{}".format(note[0], note[1])   
+                
         else:
-            output_object = index_to_note_key_g[index-1]
-                            
-    elif is_single_sharp: 
-        output_object = index_to_note_key_g[index] + "#" 
+            output_object = note
                     
     elif is_double_sharp:
-        if index + 1 > 12:
-            output_object = 'b5'
-        else:
+        if note[0] == "f" or note ==[0] == "c":
             output_object = index_to_note_key_g[index+1]
-              
+                
+        else:
+            output_object = note
+        
+        
+    if is_single_flat:
+        if note[0] == "b":
+            if len(note) == 1:
+                output_object = note + "b"
+            else:
+                output_object = "{}b{}".format(note[0], note[1])   
+                
+        else:
+            output_object = note
+                    
+    elif is_double_flat:
+        if note[0] == "b" or note ==[0] == "e":
+            output_object = index_to_note_key_g[index-1]           
+        else:
+            output_object = note
+            
     else:
-        output_object = index_to_note_key_g[index]    
+        output_object = note 
+        
         
     return output_object
         
 
 def process_note_f_key(index):
-    if is_single_flat:
-        output_object = index_to_note_key_g[index] + "b"
-                    
-    elif is_double_flat:
-        if index - 1 < 0:
-            output_object = 'd2'
+    note = index_to_note_key_f[index] 
+    
+    if is_single_sharp:
+        if note[0] == "f":
+            if len(note) == 1:
+                output_object = note + "#"
+            else:
+                output_object = "{}#{}".format(note[0], note[1])   
+                
         else:
-            output_object = index_to_note_key_g[index-1]
-                            
-    elif is_single_sharp: 
-        output_object = index_to_note_key_f[index] + "#" 
+            output_object = note
                     
-    elif is_double_sharp:
-        if index + 1 > 12:
-            output_object = 'd'
-        else:
+    if is_double_sharp:
+        if note[0] == "f" or note ==[0] == "c":
             output_object = index_to_note_key_f[index+1]
-              
-    else:
-        output_object = index_to_note_key_g[index]      
+                
+        else:
+            output_object = note
         
+        
+    if is_single_flat:
+        if note[0] == "b":
+            if len(note) == 1:
+                output_object = note + "b"
+            else:
+                output_object = "{}b{}".format(note[0], note[1])   
+                
+        else:
+            output_object = note
+                    
+    if is_double_flat:
+        if note[0] == "b" or note ==[0] == "e":
+            output_object = index_to_note_key_f[index-1]           
+        else:
+            output_object = note
+            
+    else:
+        output_object = note 
+            
     return output_object
             
             

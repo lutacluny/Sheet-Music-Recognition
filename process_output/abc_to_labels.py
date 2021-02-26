@@ -25,7 +25,6 @@ def process_file(f_name):
     body = []
     f_name_in = "{}/{}".format(abc_dir, f_name) 
     lines = open(f_name_in).readlines()
-    
     header, index_body = parse_header(lines) 
     
     body = parse_body(lines, index_body)
