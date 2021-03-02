@@ -1,14 +1,5 @@
 # Sheet-Music-Recognition
 
-
-
-Goal: Write simple melody on a sheet of paper and let the software transform it into an audio file.
-
-Restrictions: Recognize only notes in the range c, to a and of kind full, half, quarter.
-
-Dataset: The dataset is sampled by hand from abc .svg files.
-
-
 ## Generate the data set 
 In 'generate_dataset' execute the following scripts in the given order. The data set contains the respective png images of the musical notation and can be found in 'generate_dataset/png_objects'.
 
