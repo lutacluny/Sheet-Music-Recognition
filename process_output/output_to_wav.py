@@ -52,7 +52,7 @@ def parse_list(f_name):
     
     for line in lines:
         for item in line.split(' '):
-            if len(item) == 0:
+            if len(item) == 0 or item == "_":
                 continue
             splitted = item.split('_')
             
@@ -83,19 +83,22 @@ def parse_list(f_name):
                     
             elif musical_object == "repeat":
                 continue 
-                    
+            
             elif musical_object == "z":
                 output_object = symbol_to_value[musical_object]
                 output_kind = kind_to_value[kind]
-
-                    
+                output_object = symbol_to_value[musical_object] 
+                
             else:
                 try:
                     index = note_to_index[musical_object] - 1
                 except KeyError:
                     print(f_name, item) 
                     
-                output_kind = kind_to_value[kind]
+                try:
+                    output_kind = kind_to_value[kind]
+                except KeyError:
+                    print(f_name, item)
                 
                 if is_g_key:
                     output_object = process_note_g_key(index)
