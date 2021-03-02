@@ -97,6 +97,11 @@ K_C_cleff_bass = {
     "height": 20.129,
     "name":"K_C_cleff_bass"}
  
+_ = {
+    "width": 1.0,
+    "height": 24.0,
+    "name":"_"   
+}
 symbol_dict = {
     "z_full":z_full ,
     "z_half":z_half ,
@@ -114,13 +119,14 @@ symbol_dict = {
     "K_C_cleff_bass":K_C_cleff_bass ,
     "K_C":K_C,
     "repeat_start":repeat_start,
-    "repeat_end":repeat_end
+    "repeat_end":repeat_end,
+    "_":_
     }
 
 symbol_pos_centered = [M_2_4, M_3_4, M_4_4, M_6_8, M_C, 
                        repeat_start, repeat_end, 
                        z_half, z_quarter, z_eigth, 
-                       K_D, K_G, K_Bb, K_F]
+                       K_D, K_G, K_Bb, K_F, _]
 
 
 

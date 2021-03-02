@@ -83,7 +83,7 @@ def parse_body(lines, index_body ):
             
             
             if item == "|":
-                continue
+                new_item = "_"
      
             elif item == "|:":
                 new_item = "repeat_start"
