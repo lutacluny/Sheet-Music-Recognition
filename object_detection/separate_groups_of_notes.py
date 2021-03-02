@@ -16,9 +16,9 @@ import Union_and_Find
 thresh = 140
 fn = lambda x : 255 if x > thresh else 0
 
-amount_black_pixel_deviation = 1
-tresh_delete_noise_of_marked_cols = 0.05
-seperate_width = 1/15 #per cent of the line width
+amount_black_pixel_deviation = 1.4
+tresh_delete_noise_of_marked_cols = 0.00
+seperate_width = 1/10 #per cent of the line width
 
 dir_to_save = "separated_notes"
 dir_to_open = "groups_to_separate"
@@ -39,7 +39,7 @@ def main():
             if test_name[0] == '_':
                 continue
         
-
+            print(dirName, fName)
             img = Image.open("{}/{}".format(dirName,fName))
             np_img = np.asarray(img)
             img = img.convert('L').point(fn, mode='1')
@@ -209,6 +209,9 @@ def create_list_of_notes(marked_cols):
             
         index += 1
    
+    if is_on_a_note:
+        notes.append([index_lower, index - 1])
+        
     return notes
 
 def is_note_col(col):

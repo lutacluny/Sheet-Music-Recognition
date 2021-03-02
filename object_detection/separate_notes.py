@@ -16,9 +16,9 @@ import Union_and_Find
 thresh = 140
 fn = lambda x : 255 if x > thresh else 0
 
-amount_black_pixel_deviation = 0.5
-tresh_delete_noise_of_marked_cols = 0.05
-seperate_width = 1/100 #per cent of the line width
+amount_black_pixel_deviation = 0.6
+tresh_delete_noise_of_marked_cols = 0.0
+seperate_width = 1/120 #per cent of the line width
 
 dir_to_save = "separated_notes"
 dir_to_open = "separated_lines"
@@ -205,7 +205,7 @@ def create_list_of_notes(marked_cols):
             
             
         index += 1
-   
+       
     return notes
 
 def is_note_col(col):
@@ -217,9 +217,6 @@ def is_note_col(col):
 def convert_notes_to_images(notes, out_dir, np_img):
     index = 0
     for note in notes:
-        if index == len(notes) - 1: #ommit end line  
-            index += 1
-            continue
         note_matrix = np_img[:, note[0]:note[1]]
         note_img = Image.fromarray(note_matrix)
         note_img.save("{}/note_{}.png".format(out_dir, index))

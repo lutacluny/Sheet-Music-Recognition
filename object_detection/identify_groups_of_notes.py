@@ -16,7 +16,7 @@ import Union_and_Find
 thresh = 140
 fn = lambda x : 255 if x > thresh else 0
 
-epsilon_equiv_classes = 0.5 # of smallest width
+epsilon_equiv_classes = 1.2 # of smallest width
 
 dir_to_save = "groups_to_separate"
 dir_to_open = "separated_notes"

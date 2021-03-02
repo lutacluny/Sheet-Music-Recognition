@@ -15,7 +15,7 @@ import shutil
 import Union_and_Find
 
 
-thresh = 140
+thresh = 128
 fn = lambda x : 255 if x > thresh else 0
 
 
