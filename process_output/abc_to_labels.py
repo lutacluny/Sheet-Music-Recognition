@@ -29,9 +29,9 @@ def process_file(f_name):
     body = []
     f_name_in = "{}/{}".format(abc_dir, f_name) 
     lines = open(f_name_in).readlines()
-    header, index_body = parse_header(lines) 
+    header, index_body, key = parse_header(lines) 
     
-    body = parse_body(lines, index_body)
+    body = parse_body(lines, index_body, key)
     
     f_name_out = "{}/{}".format(label_dir,f_name)
     f_out = open(f_name_out, "w")
@@ -39,6 +39,7 @@ def process_file(f_name):
     
 def parse_header(lines):
     header = [] 
+    key = [] 
     index = 0
     
     for item in lines:
@@ -56,18 +57,26 @@ def parse_header(lines):
             new_item = item.replace(":","_")
             new_item = new_item.replace("/","_")
             new_item = new_item.replace(" ","_")
-            header.append(new_item+ " ")
+            
+            if not new_item == "K_C":
+                header = ["K_C ", new_item+ " "]
+                key = ["K_C ", new_item+ " "]
+            else:
+                
+                header.append(new_item+ " ")
+                key.append(new_item+ " ")
 
         elif item[0] == 'L':
             index += 1
             continue
             
         else:
-            return header, index
+            return header, index, key
         
         index += 1
     
-def parse_body(lines, index_body ):
+def parse_body(lines, index_body, key):
+    is_first_line = True
     body = [] 
     index = 0 
     
@@ -76,6 +85,9 @@ def parse_body(lines, index_body ):
             index += 1 
             continue
         
+        if not is_first_line:
+            body = body + key 
+            
         for item in line.split(" "):
             item = item.strip()
             if len(item) == 0:
@@ -114,7 +126,7 @@ def parse_body(lines, index_body ):
             body.append(new_item + " ")
             
         body.append("\n")
-        
+        is_first_line = False
     return body
 
 
