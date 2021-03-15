@@ -1,0 +1,77 @@
+\documentclass{llncs}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[authoryear]{natbib}
+\usepackage{svg}
+
+\hypersetup{
+    bookmarks=true,
+    unicode=false,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    pdffitwindow=false,
+    pdfstartview={FitH},
+    pdftitle={My title},
+    pdfauthor={Author},
+    pdfsubject={Subject},
+    pdfcreator={Creator},
+    pdfproducer={Producer},
+    pdfkeywords={keyword1} {key2} {key3},
+    pdfnewwindow=true,
+    colorlinks=false,
+    linkcolor=red,
+    citecolor=green,
+    filecolor=magenta,
+    urlcolor=cyan
+}
+
+\title{Recognizing Printed Melodies using Object Detection and a Convolution Neural Network}
+\subtitle{Report on the Lecture Machine Learning using MATLAB by Dr. Hanhe Lin}
+\author{Onur Kocahan and Friedrich Hartmann}
+\institute{University of Konstanz}
+
+\begin{document}
+ 
+\maketitle
+\section{Introduction}
+The goal of Optical Music Recognition (OMR) is to reproduce a sequence of document-written musical notation by a machine. Since the language of musical notation contains hundreds of symbols, this problems becomes really complex. \\
+Our aim is to to treat only a fragment of the musical notation language, namely the fragment of American and Europe folk music. It has a huge restriction on the alphabet, since it does not contain chords, for example, and is more appropriate of our use case. Because we want to apply OMR to an application that photocopies a tune of a song-book and transforms it later to an audio file. This can be further used to learn how to sing this tune.  \\
+Available OMR Datasets such as DeepScores \citep{DeepScores} contains around 30 000 000 sheets of written music with close to a hundred millions of small objects. This would really blow up our project. That's why we generate our own Dataset. \\
+We further follow the general framework to OMR that contains according to \citet{state_of_the_art} the following steps. 
+\begin{enumerate}
+ \item image pre-processing
+ \item recognition of the musical symbols;
+ \item reconstruction of the musical information in order to build a logical description of musical notation; and
+ \item construction of a musical notation model to be repre-sented as a symbolic description of the musical sheet.
+\end{enumerate}
+OMR really has difficulties on point 2 \citep{Baseline}. The authors applied Faster R-CNN, RetinaNet and U-Net on various datasets. The performance on DeepScores, which is not hand-written and therefore easier be trained, is not promising as the mean average precisions of the intersection over union ratios are 19.6\%, 9.8\%, and 24.8\%, respectively. \\
+An other approach by \citet{GitHub_OMR} is more promising, but has really good results around 95\% only for a selection where the bounding boxes have at least an intersection over union ratio of 0.50. \\
+That's why we invent a new approach on the object detection that is not based on a neural net. 
+
+
+\section{Musical Notation Background}
+foo
+
+\section{Training Data Sampling}
+foo
+
+\section{Object Detection}
+foo
+
+\section{Image Classification}
+foo
+
+\section{Post Processing}
+foo
+
+\newpage 
+
+\bibliographystyle{natbib}
+\bibliography{ref.bib}  
+
+\end{document}
+
