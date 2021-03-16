@@ -75,5 +75,7 @@
     \put(0.60440389,0.17979197){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
     \put(0.59219915,0.18632821){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
     \put(0.80428869,0.09702975){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}13\end{tabular}}}}%
+    \put(0.43473175,0.05111668){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}staff line\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{notation_svg-tex.pdf}}%
   \end{picture}%
 \endgroup%
