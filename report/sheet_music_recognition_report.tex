@@ -93,7 +93,7 @@ This section is about giving the reader a short summary of musical notation.\\
 There exists various styles of writing music, but we focus only on the modern staff notation which is characterized by a staff line. \\
 The position of the note head determines its name. It can be on the line, between two lines and above or under the staff using ledger lines. Therefore, limiting the ledger lines to one upper and one lower, a line can hold 13 different notes. \\
 The value of a note is specified by its shape and defines its duration which is given relatively to the beat. That means that the note value \textit{quarter} has the length of a quarter beat. \\
-A visualization of the explanations above is given in \hyperref[musical_notation]{Figure 1}. 
+A visualization of the explanations above is given in Figure~\ref{musical_notation}. 
 Other musical symbols do not depend on its vertical position at the line. 
 
 
@@ -110,9 +110,9 @@ Our database supports at the moment up to 107 different musical symbols. Therefo
 
 \section{Object Detection}
 In this section we describe our approach on the object detection. As the input is a single image file, the general task is to split this image into several images, such that each of the resulting images contains one and only one musical symbol which can be recognized by a machine. The first step is to transform the image from RBG into black and white. \\
-Our idea is further based on the observation that tunes of American and European folk music, written in the modern staff notation, contain recurrent patterns which is illustrated by \hyperref[object_detection]{Figure 2}. \\
-As it can be observed, each line, colored black, has the same height and width. Furthermore, the distance between two lines remains the same. That gives the possibility to identify first the most upper line and then calculate the position of the other lines. This can be achieved by representing the image as a matrix and identifying a column, that contains only staff lines. Because such a column has a unique pattern on the distances between the lines, which can be easily calculated on the matrix. The red colored line illustrates this fact in \hyperref[object_detection]{Figure 2}. \\
-After segmentation of the lines we split each line into symbols or groups of symbols, until each of the resulting segments contains one and only one symbol. To accomplish this, we take advantage of the fact that a column of the respective matrix representation associated with a line, has a significantly bigger amount of black pixels. The reference value of a column without a note is calculated identifying a column that matches the orange line in  \hyperref[object_detection]{Figure 2}. This is performed the same way as for the red marked column. 
+Our idea is further based on the observation that tunes of American and European folk music, written in the modern staff notation, contain recurrent patterns which is illustrated in Figure~\ref{object_detection}. \\
+As it can be observed, each line, colored black, has the same height and width. Furthermore, the distance between two lines remains the same. That gives the possibility to identify first the most upper line and then calculate the position of the other lines. This can be achieved by representing the image as a matrix and identifying a column, that contains only staff lines. Because such a column has a unique pattern on the distances between the lines, which can be easily calculated on the matrix. The red colored line illustrates this fact in Figure~\ref{object_detection}. \\
+After segmentation of the lines we split each line into symbols or groups of symbols, until each of the resulting segments contains one and only one symbol. To accomplish this, we take advantage of the fact that a column of the respective matrix representation associated with a line, has a significantly bigger amount of black pixels. The reference value of a column without a note is calculated identifying a column that matches the orange line in  Figure~\ref{object_detection}. This is performed the same way as for the red marked column. 
 
 \begin{figure}
  \includesvg[width=\linewidth]{object_detection.svg}
@@ -138,18 +138,133 @@ It turned out that $\epsilon_{black} = 60\% $ and $\delta = 1/120$ in the first 
 
 It has to be finally admitted that choosing the right values for $\epsilon_{black}$ and $\delta$ is challenging. Finding a promising strategy on that, which performs good apart form our test suite, is not part of this project.  
 
-
-
-
-
 \section{Image Classification}
-foo
+We tried various models for image classification, but only 2 of them show competitive results. These models we present are GoogleNet and ResNet50 with transfer learning techniques. We trained them on our data set from section 2.\\
+In this section, we evaluate the performance on our test suite. It contains the 543 images extracted by our object detection mechanism as described before. We show further the influence of the hyper-parameters on the model accuracy.
+
+\paragraph{Dataset}
+We fixed one model and compared different choices on the respective hyper-parameters. The results are shown in Figure~\ref{database_param}. It can be observed that the accuracy differs from 32 \% up to 52\%. Therefore, those hyper-parameters has to be chosen with special care, since they have a big influence on the accuracy. We see later, the dataset has indeed the biggest influence on the final performance. 
+
+\begin{figure}
+ \begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ Shift(x,y)&Rotation(min,max)&Scaling&Accuracy\\
+ \hline
+ (0.10,0.05) & (-2,4) & 0.1 &\%38 \\
+ \hline
+ (0.15,0.05) & (-2,4) & 0.1 &\%32 \\
+ \hline
+ (0.15,0.15) & (-2,4) & 0.1&\%42 \\
+  \hline
+ (0.15,0.15) & (-2,4) & 0.2&\%42 \\
+ \hline
+ (0.25,0.15) & (-4,4) & 0.2&\%48 \\
+ \hline
+  (0.25,0.15) & (-4,4) & 0.3&\%52 \\
+ \hline
+ (0.25,0.25) & (-6,6) & 0.3&\%43 \\
+ \hline
+\end{tabular}
+\caption{Database generation parameter effect on classification results.}
+\label{database_param}
+\end{center}
+\end{figure}
+
+ 
+\paragraph{Optimizer, Mini-batch Size, Epochs}
+Next, we analyze parameter such as optimizer, mini-batch size and numbers of epochs. Figure~\ref{model_param} shows that apart from training only 2 epochs, their influence on the best performing dataset differs only in the range of approximately 10 \%. In order to compare the effect of the optimizer, mini-batch size and the number of epochs independently, each test differs only on a single parameter. 
+
+\begin{figure}
+\begin{center}
+ \begin{tabular}{|c|c|c|c|}
+ \hline
+ Optimizer&Number of Epocs&Mini-batch Size&Accuracy\\
+ \hline
+sgdm & 3 & 64 & \%48 \\
+  \hline
+rmsprop &   3 & 64 & \%46 \\  
+  \hline adam  & 3 & 64 & \%49 \\
+    \hline adam  & 3 & 32 & \%44 \\
+    \hline adam  & 3 & 128 & \%52 \\
+  \hline adam  & 4 & 128 & \%41 \\
+  \hline adam  & 2 & 128 & \%38 \\
+
+  \hline
+ 
+\end{tabular}
+\caption{Effect of Optimizer, Number of Epochs and Mini-batch Size on classification}
+\label{model_param}
+\end{center}
+
+\end{figure}
+
+\paragraph{Learning rate}
+According to our observation in terms of hyper-tuning the model, the second most important parameter to increase the accuracy is the learning rate. It heavily influences over-fitting and under-fitting. This is important, since our dataset tends to over-fit. To find the best spot, we let the other parameters remain unchanged. Therefore, we can analyze the learning rate independently. Results are shown in Figure~\ref{learning_rate}.
+
+\begin{figure}
+
+\begin{center}
+ \begin{tabular}{|c|c|}
+ \hline
+ Learning Rate&Accuracy\\
+ \hline
+  \hline 0.001 & \%27 \\
+ \hline 0.003 & \%36 \\
+
+ \hline 0.005 & \%52 \\
+
+  \hline 0.006 & \%45 \\
+ \hline 0.007 & \%42 \\
+  \hline 0.01 & \%40 \\
+  \hline 0.02 & \%35 \\
+
+  \hline
+ 0.03 & \%50 \\
+
+ \hline
+ 
+\end{tabular}
+\caption{Relation between Learning Rate and Accuracy.}
+\label{learning_rate}
+\end{center}
+\end{figure}
+
+\paragraph{Model selection}
+We analyze GoogleNet and Resnet50 in terms of epochs, training time and accuracy after they where finely-tuned. The results are shown in Figure~\ref{model}. It can be observed that training time of GoogleNet is less, but it performs slightly better than ResNet50. 
+
+\begin{figure}
+\begin{center}
+ \begin{tabular}{|c|c|c|c|}
+ \hline
+ Model&Epochs&Training Time&Result\\
+ \hline
+   GoogleNet&3&10:27&\%52\\
+ \hline
+ ResNet50&3&16:14&\%45\\
+ \hline
+   GoogleNet&4&14:49&\%42\\
+ \hline
+ ResNet50&4&19:31&\%39\\
+ \hline  GoogleNet&5&10:14&\%32\\
+ \hline
+ ResNet50&5&10:14&\%48\\
+ \hline
+ \hline
+ 
+\end{tabular}
+\caption{Comparison of GoogleNet and ResNet50}
+\label{model}
+\end{center}
+\end{figure}
+
+\paragraph{Other}
+To evaluate the accuracy, not only the parameters mentioned before have to be considered. Although the object detection part is performing good, it is not perfect. Therefore, we had to exclude 41 images from test suite, since they directly influences the miss-classification rate of our models. Consider Figure~\ref{object_detection} again. 65 images do not contain 100 \% of the musical symbol. But our models are trained with images containing 100 \% of the note. Therefore, such un-optimal examples has to be part of the generated dataset in future. \\
+Furthermore, we think that a Convolutional Neural Net designed for image classification, does not match totally the requirements for note classification. The first one aims to detect shift invariant features in horizontal and vertical direction. For example, if the image contains a cat, the exact position of that cat does not matter. But this does not hold for notes, because the vertical position of a note determines its name (See Section 2).  
+
 
 \section{Post Processing}
-The final step is to transform the output labels into an audio file. This is performed by first converting the output labels into a format that can be processed by PySynth \cite{pysynth} which is the tool that generates the audio file. 
-
-
-\newpage 
+The final step is to transform the output labels into an audio file. This is performed by first converting the output labels into a format that can be processed by PySynth \cite{pysynth} which is the tool that generates the audio file.
 
 
 \bibliography{ref.bib}  
