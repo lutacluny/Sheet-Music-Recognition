@@ -18,8 +18,10 @@ In 'object_detection' execute the following scripts in the given order. The outp
 4. separate_groups_of_notes.py
 
 ## Classify the objects 
-TODO: Save the output labels in a text file containing the label of the rows in the respective line. See 'process_output/output_label_files'.
-
+There are parameters that can be controlled. idms locations: training data location
+net(resnet50/googlenet) net to be trained
+diroutput: location of outputs of notes
+dirtest: location of object detection(seperated notes)
 ## Convert to audio file 
 n 'process_output' execute the following script. The audio files can be accessed in 'process_output/audios'
 
