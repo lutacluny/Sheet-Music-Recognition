@@ -1,7 +1,7 @@
 # Sheet-Music-Recognition
 
 ## Generate the data set 
-In 'generate_dataset' execute the following scripts in the given order. The data set contains the respective png images of the musical notation and can be found in 'generate_dataset/png_objects'.
+In 'generate_database' execute the following scripts in the given order. The data set contains the respective png images of the musical notation and can be found in 'generate_dataset/png_objects'.
 
 1. generate_svg_notes_with_rotation.py
 2. generate_svg_notes_grouped_with_rotation.py

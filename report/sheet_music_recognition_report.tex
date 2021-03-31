@@ -72,9 +72,9 @@
  
 \maketitle
 \section{Introduction}
-The goal of Optical Music Recognition (OMR) is to reproduce a sequence of document-written musical notation by a machine. Since the language of musical notation contains hundreds of symbols, this problems becomes really complex. \\
-Our aim is to to treat only a fragment of the musical notation language, namely the fragment of American and Europe folk music. It has a huge restriction on the alphabet, since it does not contain chords, for example, and is more appropriate of our use case. Because we want to apply OMR to an application that photocopies a tune of a song-book and transforms it later to an audio file. This can be further used to learn how to sing this tune.  \\
-Available OMR Datasets such as DeepScores \citep{DeepScores} contains around 30 000 000 sheets of written music with close to a hundred millions of small objects. This would really blow up our project. That's why we generate our own Dataset. \\
+The goal of Optical Music Recognition (OMR) is to reproduce a sequence of document-written musical notation by a machine. Since the language of musical notation contains hundreds of symbols, this problem becomes really complex. \\
+We aim to treat only a fragment of the musical notation language, namely the fragment of American and European folk music. It has a huge restriction on the alphabet. For instance, it does not contain chords. Furthermore, it is more appropriate of our use case. Because we want to apply OMR to an application that photocopies a tune of a song-book and transforms it later to an audio file. This can be used to learn how to sing this tune.  \\
+Available OMR Datasets such as DeepScores \citep{DeepScores} contain around 30 000 000 sheets of written music with close to a hundred millions of small objects. This would really blow up our project. That's why we generate our own dataset. \\
 We further follow the general framework to OMR that contains according to \citet{state_of_the_art} the following steps. 
 \begin{enumerate}
  \item image pre-processing
@@ -82,9 +82,9 @@ We further follow the general framework to OMR that contains according to \citet
  \item reconstruction of the musical information in order to build a logical description of musical notation; and
  \item construction of a musical notation model to be represented as a symbolic description of the musical sheet.
 \end{enumerate}
-The most challenging task in this framework is point 2. An common approach to that is to use Neural Networks. A baseline for that is given by \citet{Baseline}. The authors applied Faster R-CNN, RetinaNet and U-Net on various datasets. The performance on DeepScores, which is not hand-written and therefore easier be trained, is not promising as the mean average precisions of the intersection over union ratios are 19.6\%, 9.8\%, and 24.8\%, respectively. \\
-An other approach by \citet{GitHub_OMR} is more promising, but has really good results around 95\% only for a selection where the bounding boxes have at least an intersection over union ratio of 0.50. \\
-That's why we invent a new approach on the object detection that is not based on a neural net.\\ We further apply a Convolutional Nueronal Network to classify the outputs of our objects detection mechanism which are then be used to generate an audio file. \\
+The most challenging task in this framework is point 2. An common approach to that is to use neuronal networks. A baseline for that is given by \citet{Baseline}. The authors applied Faster R-CNN, RetinaNet and U-Net on various datasets. The performance on DeepScores which is not hand-written and therefore, easier to be trained, is not promising as the mean average precisions of the intersection over union ratios are 19.6\%, 9.8\%, and 24.8\%, respectively. \\
+An other approach by \citet{GitHub_OMR} is more promising. But they have really good results around 95\% only for a selection where the bounding boxes have at least an intersection over union ratio of 0.50. \\
+That's why we invent a new approach on the object detection that is not based on a neural net.\\ We further apply a convolutional neuronal network to classify the outputs of our objects detection mechanism which are then be used to generate an audio file. \\
 Implementation details can be read up in our GitHub project \url{https://github.com/lutacluny/Sheet-Music-Recognition}.
 
 
@@ -104,15 +104,15 @@ Other musical symbols do not depend on its vertical position at the line.
 \end{figure}
 
 \section{Training Data Sampling}
-We build a highly flexible framework to generate a database that contains image files which can be used to train a Neuronal Net. It is build of musical symbols extracted as vector graphics by the help of the tool abc2mps \citet{abc2mps}. \\
+We build a highly flexible framework to generate a database that contains image files which can be used to train a neuronal net. It is build of musical symbols extracted as vector graphics by the help of the tool abc2mps \citet{abc2mps}. \\
 As one generated image file per musical symbol is not sufficient for training, we introduced several parameters for data augmentation. These are output dimension, scaling, rotation, horizontal shift, vertical shift and the respective number of outputs in the ranges defined by these parameters. It is for example possible to get 5 output files with respect to the scaling in the range $80\%$ to $120\%$. \\
 Our database supports at the moment up to 107 different musical symbols. Therefore, the number of training examples is $107 \cdot N$, where $N$ is the number of augmented files per symbol. 
 
 \section{Object Detection}
-In this section we describe our approach on the object detection. As the input is a single image file, the general task is to split this image into several images, such that each of the resulting images contains one and only one musical symbol which can be recognized by a machine. The first step is to transform the image from RBG into black and white. \\
+In this section we describe our approach on the object detection. As the input is a single image file, the general task is to split this image into several images, such that each of the resulting images contain one and only one musical symbol which can be recognized by a machine. The first step is to transform the image from RBG into black and white. \\
 Our idea is further based on the observation that tunes of American and European folk music, written in the modern staff notation, contain recurrent patterns which is illustrated in Figure~\ref{object_detection}. \\
 As it can be observed, each line, colored black, has the same height and width. Furthermore, the distance between two lines remains the same. That gives the possibility to identify first the most upper line and then calculate the position of the other lines. This can be achieved by representing the image as a matrix and identifying a column, that contains only staff lines. Because such a column has a unique pattern on the distances between the lines, which can be easily calculated on the matrix. The red colored line illustrates this fact in Figure~\ref{object_detection}. \\
-After segmentation of the lines we split each line into symbols or groups of symbols, until each of the resulting segments contains one and only one symbol. To accomplish this, we take advantage of the fact that a column of the respective matrix representation associated with a line, has a significantly bigger amount of black pixels. The reference value of a column without a note is calculated identifying a column that matches the orange line in  Figure~\ref{object_detection}. This is performed the same way as for the red marked column. 
+After segmentation of the lines we split each line into symbols or groups of symbols, until each of the resulting segments contain one and only one symbol. To accomplish this, we take advantage of the fact that a column of the respective matrix representation associated with a musical symbol, has a significantly bigger amount of black pixels. The reference value of a column without a musical symbol is calculated identifying a column that matches the orange line in  Figure~\ref{object_detection}. This is performed the same way as for the red marked column. 
 
 \begin{figure}
  \includesvg[width=\linewidth]{object_detection.svg}
@@ -120,9 +120,9 @@ After segmentation of the lines we split each line into symbols or groups of sym
  \label{object_detection}
 \end{figure}
 
-The success of this procedures depends on photo quality. It is mandatory that the staff lines are parallel to the edges of the photocopy. But in practice, this not really an issue, since most cameras have a grid implemented. \\
+The success of this procedure depends on the photo quality. It is mandatory that the staff lines are parallel to the edges of the photocopy. But in practice, this not really an issue, since most cameras have a grid implemented. \\
 Furthermore, there are two hyper-parameters that needs to be chosen appropriated. Like we explained before, what matters is the amount of black pixels per column. So, there needs to be a thresh hold that separates columns containing musical symbols from those containing only staff lines. This is given as $\epsilon_{black}$ in per cent. The second one ,$\delta$, is the separate width, given as a fraction of the images width. Only columns marked as containing a note, for which its distance exceeds the separate width, are split. \\
-It turned out that $\epsilon_{black} = 60\% $ and $\delta = 1/120$ in the first run and $\epsilon_{black} = 140\%$ and $\delta = 1/10$ in the second shows desirable results. Our test images are split into 543 different images. It holds further that each new image contains one and only one musical symbol. The quality is shown in \hyperref[quality]{Figure 3}.
+It turned out that $\epsilon_{black} = 60\% $ and $\delta = 1/120$ in the first run and $\epsilon_{black} = 140\%$ and $\delta = 1/10$ in the second shows desirable results. Our test images are split into 543 different images. It holds further, that each new image contain one and only one musical symbol. The quality is shown in \hyperref[quality]{Figure 3}.
 
 \begin{figure}
 \begin{tabular}{l|l l l l}
@@ -259,8 +259,8 @@ We analyze GoogleNet and Resnet50 in terms of epochs, training time and accuracy
 \end{figure}
 
 \paragraph{Other}
-To evaluate the accuracy, not only the parameters mentioned before have to be considered. Although the object detection part is performing good, it is not perfect. Therefore, we had to exclude 41 images from test suite, since they directly influences the miss-classification rate of our models. Consider Figure~\ref{object_detection} again. 65 images do not contain 100 \% of the musical symbol. But our models are trained with images containing 100 \% of the note. Therefore, such un-optimal examples has to be part of the generated dataset in future. \\
-Furthermore, we think that a Convolutional Neural Net designed for image classification, does not match totally the requirements for note classification. The first one aims to detect shift invariant features in horizontal and vertical direction. For example, if the image contains a cat, the exact position of that cat does not matter. But this does not hold for notes, because the vertical position of a note determines its name (See Section 2).  
+To evaluate the accuracy, not only the parameters mentioned before have to be considered. We noticed, that our models have difficulties on 14 of the symbols. Such symbols occur 41 times in our test suite. Thus, we decreased the size of the test suite from 543 to 502. It remain only 93 different output labels to classify. \\
+Furthermore, we think that a convolutional neuronal net designed for image classification, does not match totally the requirements for note classification. The first one aims to detect shift invariant features in horizontal and vertical direction. For example, if the image contains a cat, the exact position of that cat does not matter. But this does not hold for notes, because the vertical position of a note determines its name (See Section 2).  
 
 
 \section{Post Processing}
