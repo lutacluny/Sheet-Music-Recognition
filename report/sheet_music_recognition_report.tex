@@ -65,7 +65,7 @@
     urlcolor=cyan
 }
 
-\title{Recognizing Printed Melodies using Object Detection and a Convolution Neural Network}
+\title{Optical Music Recognition using Object Detection and a Convolutional Neuronal Network}
 \author{Onur Kocahan and Friedrich Hartmann}
 
 \begin{document}
@@ -90,7 +90,7 @@ Implementation details can be read up in our GitHub project \url{https://github.
 
 \section{Musical Notation Background}
 This section is about giving the reader a short summary of musical notation.\\
-There exists various styles of writing music, but we focus only on the modern staff notation which is characterized by a staff line. \\
+There exist various styles of writing music, but we focus only on the modern staff notation which is characterized by a staff line. \\
 The position of the note head determines its name. It can be on the line, between two lines and above or under the staff using ledger lines. Therefore, limiting the ledger lines to one upper and one lower, a line can hold 13 different notes. \\
 The value of a note is specified by its shape and defines its duration which is given relatively to the beat. That means that the note value \textit{quarter} has the length of a quarter beat. \\
 A visualization of the explanations above is given in Figure~\ref{musical_notation}. 
@@ -166,7 +166,7 @@ We fixed one model and compared different choices on the respective hyper-parame
  (0.25,0.25) & (-6,6) & 0.3&\%43 \\
  \hline
 \end{tabular}
-\caption{Database generation parameter effect on classification results.}
+\caption{The database generation parameters effect the classification accuracy.}
 \label{database_param}
 \end{center}
 \end{figure}
@@ -193,7 +193,7 @@ rmsprop &   3 & 64 & \%46 \\
   \hline
  
 \end{tabular}
-\caption{Effect of Optimizer, Number of Epochs and Mini-batch Size on classification}
+\caption{The effect of choosing optimizer, number of epochs and mini-batch size on the classification precision}
 \label{model_param}
 \end{center}
 
@@ -225,7 +225,7 @@ According to our observation in terms of hyper-tuning the model, the second most
  \hline
  
 \end{tabular}
-\caption{Relation between Learning Rate and Accuracy.}
+\caption{Relation between learning rate and accuracy.}
 \label{learning_rate}
 \end{center}
 \end{figure}
